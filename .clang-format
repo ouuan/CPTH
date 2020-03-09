@@ -25,6 +25,7 @@ BraceWrapping:
 BreakBeforeBraces: Custom
 ColumnLimit:     100
 IndentWidth:     4
+PointerAlignment: Right
 Standard:        Cpp11
 TabWidth:        4
 UseTab:          Never

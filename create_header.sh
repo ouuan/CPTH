@@ -24,7 +24,7 @@ echo "## $2
 
 " > docs/$1/$2.md
 
-echo "#include \"$2.h\"
+echo "#include \"$1/$2.h\"
 
 #include <iostream>
 #include <cstdio>
@@ -32,6 +32,8 @@ echo "#include \"$2.h\"
 int main()
 {
 
+
+    return 0;
 }" > tests/$1/$2.cpp
 
 echo '#include <iostream>
@@ -39,24 +41,49 @@ echo '#include <iostream>
 
 int main()
 {
+    
 
+    return 0;
 }' > tests/$1/$2_bf.cpp
 
-echo '#include <iostream>
+echo '#include <chrono>
 #include <cstdio>
+#include <ctime>
+#include <iostream>
+#include <random>
+
+using namespace std;
+
+mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
+
+int randint(int l, int r) { return rnd() % (r - l + 1) + l; }
 
 int main()
 {
+    
 
+    return 0;
 }' > tests/$1/$2_gen.cpp
 
 echo '#include "testlib.h"
 
 int main()
 {
+    
 
+    return 0;
 }' > tests/$1/$2_check.cpp
 
 echo "## $2
+
+### Description
+
+
+
+### Input
+
+
+
+### Output
 
 " > tests/$1/$2.md

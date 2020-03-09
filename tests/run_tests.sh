@@ -10,7 +10,7 @@ for i in */*_gen.cpp; do
     test=${genfile%_gen.cpp}
     echo "Running the test $test..."
     echo "Compiling $test.cpp..."
-    g++ $category/$test.cpp -o tmp/$test -Wall -Wshadow -Wextra -Werror -std=c++11 -O2 -I ../headers/*
+    g++ $category/$test.cpp -o tmp/$test -Wall -Wshadow -Wextra -Werror -std=c++11 -O2 -I ../headers
     echo "Compiling ${test}_gen.cpp..."
     g++ $category/${test}_gen.cpp -o tmp/${test}_gen -std=c++11 -O2
     echo "Compiling ${test}_bf.cpp..."
