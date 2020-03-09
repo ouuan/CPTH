@@ -1,6 +1,9 @@
 #include "data_structure/SegmentTree.h"
 
 #include <cstdio>
+#include <iostream>
+
+using namespace std;
 
 typedef long long ll;
 
@@ -31,12 +34,12 @@ void update(SegmentTreeNode<int, Modification> &node, const Modification &mod)
 
 int main()
 {
-    scanf("%d%d%d", &n, &m, &p);
+    cin >> n >> m >> p;
 
-    std::vector<int> a(n);
+    vector<int> a(n);
     for (auto &x : a)
     {
-        scanf("%d", &x);
+        cin >> x;
         x %= p;
     }
 
@@ -45,17 +48,17 @@ int main()
     while (m--)
     {
         int opt, l, r;
-        scanf("%d%d%d", &opt, &l, &r);
+        cin >> opt >> l >> r;
         if (opt == 1)
         {
             int x;
-            scanf("%d", &x);
+            cin >> x;
             t.modify(l, r + 1, Modification(0, x));
         }
         else if (opt == 2)
         {
             int x;
-            scanf("%d", &x);
+            cin >> x;
             t.modify(l, r + 1, Modification(x, 1));
         }
         else
