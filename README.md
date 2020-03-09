@@ -4,7 +4,7 @@
 
 What is CPTH?
 
-It's the Competitive Programming Template Headers.
+It's the Competitive Programming Template Headers for C++.
 
 It's not STL: It's for competitive programming.
 
