@@ -10,7 +10,7 @@ assignees: ''
 
 - Name: <!-- the English name of the algorithm/data structure -->
 
-- Category: <!-- data structure / graph / math / DP / string, or others -->
+- Category: <!-- data structure / graph / math / DP / string / geometry / miscs, or others -->
 
 <!-- What can it do? -->
 
