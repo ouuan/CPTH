@@ -16,6 +16,10 @@ It's not a library: These are single-file headers, which is more convenient for 
 
 Just paste the headers in the [headers](headers) directory at the beginning of your code.
 
-Each file has a document, you can read them and have a try.
+Each file has a document in the [docs](docs) directory, you can read them and have a try.
 
 The codes are based on C++11, there may be problems with other standards.
+
+## Contribute?!
+
+You can read [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
