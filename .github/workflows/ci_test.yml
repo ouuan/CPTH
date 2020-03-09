@@ -1,0 +1,32 @@
+name: "CI Test"
+
+on:
+  push:
+    paths-ignore:
+    - 'docs/**'
+    - '*.md'
+  pull_request:
+    paths-ignore:
+    - 'docs/**'
+    - '*.md'
+
+jobs:
+  build:
+    name: "CI Test on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: "Get submodules"
+      run: git submodule update --init --recursive
+    
+    - name: "Run tests"
+      shell: bash
+      run: |
+        cd tests
+        ./run_tests.sh
