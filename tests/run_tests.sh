@@ -16,7 +16,7 @@ for i in */*_gen.cpp; do
     echo "Compiling ${test}_bf.cpp..."
     g++ $category/${test}_bf.cpp -o tmp/${test}_bf -std=c++11 -O2
     echo "Compiling ${test}_check.cpp..."
-    g++ $category/${test}_check.cpp -o tmp/${test}_check -std=c++11 -O2 -I ../testlib
+    g++ $category/${test}_check.cpp -o tmp/${test}_check -std=c++11 -O2 -I testlib
     echo "Running ${test}_gen..."
     tmp/${test}_gen > tmp/$test.in
     echo "Running ${test}..."
