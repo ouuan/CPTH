@@ -25,7 +25,7 @@ A header consists of the following:
    - `tests/category/testName.cpp`, use CPTH to solve the problem.
    - `tests/category/testName_bf.cpp`, use brute force to solve the problem.
    - `tests/category/testName_gen.cpp`, generate a testcase for the problem.
-   - `tests/category/testName_check.cpp`, use [testlib.h](testlib/testlib.h) to check if the answer is correct.
+   - `tests/category/testName_check.cpp`, use [testlib](https://github.com/MikeMirzayanov/testlib) to check if the answer is correct.
 
 After finishing all the above files, you can run `tests/run_tests.sh`.
 
