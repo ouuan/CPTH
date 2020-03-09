@@ -1,1 +1,0 @@
-#include "checkers/ncmp.cpp"
