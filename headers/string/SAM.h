@@ -84,16 +84,14 @@ class SAM
 
     unsigned int size() const { return t.size(); }
 
-    const SAMNode &operator[](int x) const
+    const SAMNode &operator[](unsigned int x) const
     {
-        assert(x >= 0);
         assert(x < t.size());
         return t[x];
     }
 
-    const std::vector<int> &children(int x) const
+    const std::vector<int> &children(unsigned int x) const
     {
-        assert(x >= 0);
         assert(x < g.size());
         return g[x];
     }

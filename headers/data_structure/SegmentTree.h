@@ -33,7 +33,7 @@ class SegmentTree
         long long _startPoint = 1, const valueType &_valueZero = valueType(),
         const modType &_modZero = modType())
     {
-        init(_startPoint, _initValue, _merge, _update, _valueZero, _modZero);
+        init(_initValue, _merge, _update, _startPoint, _valueZero, _modZero);
     }
 
     void init(const std::vector<valueType> &_initValue,
@@ -43,7 +43,7 @@ class SegmentTree
               const modType &_modZero = modType())
     {
         assert(_startPoint >= LLONG_MIN / 2);
-        assert(_startPoint <= LLONG_MAX / 2 - _initValue.size());
+        assert(_startPoint <= LLONG_MAX / 2 - (long long)_initValue.size());
         leftRange = _startPoint;
         rightRange = _startPoint + _initValue.size();
         m_init(_initValue, _merge, _update, _valueZero, _modZero);
