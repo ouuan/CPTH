@@ -1,7 +1,7 @@
 # CPTH
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ouuan/CPTH/CI%20Test?label=CI%20Test)](https://github.com/ouuan/CPTH/actions)
-[![Codecov](https://img.shields.io/codecov/c/github/ouuan/CPTH)](https://codecov.io/gh/ouuan/CPTH)
+[![CI Test](https://github.com/ouuan/CPTH/workflows/CI%20Test/badge.svg)](https://github.com/ouuan/CPTH/actions)
+[![codecov](https://codecov.io/gh/ouuan/CPTH/branch/master/graph/badge.svg)](https://codecov.io/gh/ouuan/CPTH)
 
 What is CPTH?
 
