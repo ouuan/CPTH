@@ -44,7 +44,7 @@ jobs:
           "./${test}_bf" < "$test.in" > "${test}_bf.out"
           echo "Running ${test}_check..."
           "./${test}_check" "$test.in" "$test.out" "${test}_bf.out"
-          echo "Getting coverage info..."
+          echo "Generating coverage report..."
           gcov -n -o . "$category/$test.cpp" > /dev/null
           echo "The test $test has passed."
         done
