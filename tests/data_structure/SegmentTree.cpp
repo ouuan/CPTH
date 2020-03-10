@@ -51,16 +51,16 @@ int main()
         {
             int x;
             cin >> x;
-            t.modify(l, r + 1, Modification(0, x));
+            t.modify(l, r + 1, {0, x});
         }
         else if (opt == 2)
         {
             int x;
             cin >> x;
-            t.modify(l, r + 1, Modification(x, 1));
+            t.modify(l, r + 1, {x, 1});
         }
         else
-            printf("%d\n", t.query(l, r + 1));
+            cout << t.query(l, r + 1) << endl;
     }
 
     return 0;

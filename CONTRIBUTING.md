@@ -20,7 +20,7 @@ A header consists of the following:
 
 1. The header itself at `headers/category/headerName.h`.
 2. A document which describes how to use the header, including the description for each function, at `docs/category/headerName.md`.
-3. A short introduction of this header and links to the header and the document at [HEADER_LIST.md](HEADER_LIST.md).
+3. A short introduction of this header and links to the header, the document and one of its tests at [HEADER_LIST.md](HEADER_LIST.md).
 4. At least one test, which consists of:
    - `tests/category/testName.md`, describe the problem.
    - `tests/category/testName.cpp`, use CPTH to solve the problem.

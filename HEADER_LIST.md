@@ -6,3 +6,4 @@ A segment tree template, you only have to implement two key functions, lazy prop
 
 - [SegmentTree.h](headers/data_structure/SegmentTree.h)
 - [SegmentTree.md](docs/data_structure/SegmentTree.md)
+- [SegmentTree.cpp](tests/data_structure/SegmentTree.cpp)
