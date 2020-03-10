@@ -10,4 +10,4 @@ Each test has the following files:
 - `category/testName_gen.cpp`, generate a testcase for the problem.
 - `category/testName_check.cpp`, use [testlib](https://github.com/MikeMirzayanov/testlib) to check if the answer is correct.
 
-You can run `run_tests.sh` to run the tests locally. (On Windows, you can use Git bash to run it.)
+You can run `run_all_tests.sh` or `run_single_test.sh` to run the tests locally. (On Windows, you can use Git bash to run it.)

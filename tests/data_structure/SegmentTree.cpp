@@ -1,8 +1,9 @@
-#include "data_structure/SegmentTree.h"
+#include "SegmentTree.h"
 
 #include <iostream>
 
 using namespace std;
+using namespace CPTH;
 
 typedef long long ll;
 

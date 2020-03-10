@@ -1,9 +1,13 @@
-#ifndef CPTH_SEGMENTTREE
-#define CPTH_SEGMENTTREE
+// Get other headers at https://github.com/ouuan/CPTH
+
+#ifndef CPTH_DATA_STRUCTURE_SEGMENTTREE
+#define CPTH_DATA_STRUCTURE_SEGMENTTREE
 
 #include <functional>
 #include <vector>
 
+namespace CPTH
+{
 template <typename valueType, typename modType>
 struct SegmentTreeNode
 {
@@ -132,5 +136,6 @@ class SegmentTree
     valueType valueZero;
     modType modZero;
 };
+}  // namespace CPTH
 
-#endif  // CPTH_SEGMENTTREE
+#endif  // CPTH_DATA_STRUCTURE_SEGMENTTREE
