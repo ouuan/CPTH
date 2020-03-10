@@ -90,7 +90,7 @@ Construct a segment tree that:
 - the identity element of values is `_valueZero`
 - the no-effect element of mods is `_modZero`
 
-You can use either a function pointer or a `std::function` (like a lambda) for `_merge` and `_update`.
+You can use either a function pointer or a `std::function` (for example, a lambda) for `_merge` and `_update`.
 
 You can also call `init(...)` with the same parameters to init a segment tree.
 
@@ -112,7 +112,7 @@ Construct a segment tree that:
 - the identity element of values is `_valueZero`
 - the no-effect element of mods is `_modZero`
 
-You can use either a function pointer or a `std::function` (like a lambda) for `_merge` and `_update`.
+You can use either a function pointer or a `std::function` (for example, a lambda) for `_merge` and `_update`.
 
 You can also call `init(...)` with the same parameters to init a segment tree.
 
