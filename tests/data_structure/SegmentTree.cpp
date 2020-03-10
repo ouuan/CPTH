@@ -1,6 +1,5 @@
 #include "data_structure/SegmentTree.h"
 
-#include <cstdio>
 #include <iostream>
 
 using namespace std;
@@ -24,8 +23,6 @@ struct Modification
     }
 };
 
-int merge(const int &x, const int &y) { return (x + y) % p; }
-
 void update(SegmentTreeNode<int, Modification> &node, const Modification &mod)
 {
     node.val = ((ll)node.val * mod.mul + (ll)mod.add * (node.right - node.left)) % p;
@@ -43,7 +40,8 @@ int main()
         x %= p;
     }
 
-    SegmentTree<int, Modification, merge, update> t(a);
+    SegmentTree<int, Modification> t(
+        a, [](int x, int y) { return (x + y) % p; }, update);
 
     while (m--)
     {

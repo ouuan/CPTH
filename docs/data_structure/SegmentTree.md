@@ -26,7 +26,7 @@ In this template, you only have to implement these key parts of a segment tree, 
 
 To construct a segment tree, you have to choose a type for the **value**, a type for the **modification** (which is `mod` in the codes), implement the `merge` function and the `update` function.
 
-The declaration: `SegmentTree<valueType, modType, merge, update>`.
+The declaration: `SegmentTree<valueType, modType>`.
 
 #### Value
 
@@ -39,12 +39,6 @@ The declaration: `SegmentTree<valueType, modType, merge, update>`.
 - supports the `=` operator
 - has default constructor
 - have a special element **modZero**. If you perform **modZero** to any **value**, the **value** keep unchanged. For example, it is 0 if modification is to add, it is INF (a sufficiently large number) if modification is to choose the smaller one between the old **value** and the **modification**.
-
-#### merge
-
-`valueType merge(const valueType &x, const valueType &y)`
-
-The return value is the result of merging the two parameters.
 
 #### node
 
@@ -62,6 +56,12 @@ struct SegmentTreeNode
 - the `id` of the root is 1, the `id` of the left child of x is 2x, the `id` of the right child of x is 2x+1
 - the `left` and `right` represent for the subsegment [left, right) of the node
 
+#### merge
+
+`valueType merge(const valueType &x, const valueType &y)`
+
+The return value is the result of merging the two parameters.
+
 #### update
 
 `void update((SegmentTreeNode<valueType, modType> &node, const modType &mod))`
@@ -70,28 +70,64 @@ This function performs the modification `mod` to the `node`. If lazy propagation
 
 #### public functions
 
-`explicit SegmentTree()`: Construct a segment tree that:
-- represents for the segment [1, 2)
-- initially a[1] = `valueType()`
-- the identity element of values is `valueType()`
-- the no-effect element of mods is `modType()`
+`explicit SegmentTree()`: Construct an empty segment tree.
 
-`explicit SegmentTree(int _startPoint, const std::vector<valueType> &_initValue, const valueType &_valueZero = valueType(), const modType &_modZero = modType())`: Construct a segment tree that:
+---
+
+```cpp
+explicit SegmentTree(
+        int _startPoint, const std::vector<valueType> &_initValue,
+        std::function<valueType(const valueType &, const valueType &)> _merge,
+        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
+```
+
+Construct a segment tree that:
 - represents for the segment [`_startPoint`, `_startPoint` + `_initValue.size()`)
 - initially a[i] = `initValue[i - _startPoint]`
+- The merge function is `_merge`.
+- The update function is `_update`.
 - the identity element of values is `_valueZero`
 - the no-effect element of mods is `_modZero`
 
-`explicit SegmentTree(const std::vector<valueType> &_initValue, const valueType &_valueZero = valueType(), const modType &_modZero = modType())`: Construct a segment tree that:
+You can use either a function pointer or a `std::function` (like a lambda) for `_merge` and `_update`.
+
+You can also call `init(...)` with the same parameters to init a segment tree.
+
+---
+
+```cpp
+explicit SegmentTree(
+        const std::vector<valueType> &_initValue,
+        std::function<valueType(const valueType &, const valueType &)> _merge,
+        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
+```
+
+Construct a segment tree that:
 - represents for the segment [1, 1 + `_initValue.size()`)
 - initially a[i] = `initValue[i - 1]`
+- The merge function is `_merge`.
+- The update function is `_update`.
 - the identity element of values is `_valueZero`
 - the no-effect element of mods is `_modZero`
+
+You can use either a function pointer or a `std::function` (like a lambda) for `_merge` and `_update`.
+
+You can also call `init(...)` with the same parameters to init a segment tree.
+
+---
 
 `void modify(int l, int r, const modType& mod)`: Perform the modification mod to the subsegment [l, r).
 
+---
+
 `void modify(void modify(int p, const modType& mod)`: Perform the modification mod to the single element `a[p]`.
 
+---
+
 `valueType query(int l, int r)`: Return the value of the sum (merge result) of subsegment [l, r).
+
+---
 
 `valueType query(int p)`: Return the value of the single element `a[p]`.

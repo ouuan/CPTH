@@ -1,6 +1,7 @@
 #ifndef CPTH_SEGMENTTREE
 #define CPTH_SEGMENTTREE
 
+#include <functional>
 #include <vector>
 
 template <typename valueType, typename modType>
@@ -12,42 +13,48 @@ struct SegmentTreeNode
     modType mod;
 };
 
-template <typename valueType, typename modType,
-          valueType (*merge)(const valueType &, const valueType &),
-          void (*update)(SegmentTreeNode<valueType, modType> &, const modType &)>
+template <typename valueType, typename modType>
 class SegmentTree
 {
    public:
-    explicit SegmentTree() { init(std::vector<valueType>(1)); }
+    explicit SegmentTree() = default;
 
-    explicit SegmentTree(int _startPoint, const std::vector<valueType> &_initValue,
-                         const valueType &_valueZero = valueType(),
-                         const modType &_modZero = modType())
+    explicit SegmentTree(
+        int _startPoint, const std::vector<valueType> &_initValue,
+        std::function<valueType(const valueType &, const valueType &)> _merge,
+        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
     {
-        init(_startPoint, _initValue, _valueZero, _modZero);
+        init(_startPoint, _initValue, _merge, _update, _valueZero, _modZero);
     }
 
-    explicit SegmentTree(const std::vector<valueType> &_initValue,
-                         const valueType &_valueZero = valueType(),
-                         const modType &_modZero = modType())
+    explicit SegmentTree(
+        const std::vector<valueType> &_initValue,
+        std::function<valueType(const valueType &, const valueType &)> _merge,
+        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
     {
-        init(_initValue, _valueZero, _modZero);
+        init(_initValue, _merge, _update, _valueZero, _modZero);
     }
 
     void init(int _startPoint, const std::vector<valueType> &_initValue,
+              std::function<valueType(const valueType &, const valueType &)> _merge,
+              std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
               const valueType &_valueZero = valueType(), const modType &_modZero = modType())
     {
         leftRange = _startPoint;
         rightRange = _startPoint + _initValue.size();
-        m_init(_initValue, _valueZero, _modZero);
+        m_init(_initValue, _merge, _update, _valueZero, _modZero);
     }
 
-    void init(const std::vector<valueType> &_initValue, const valueType &_valueZero = valueType(),
-              const modType &_modZero = modType())
+    void init(const std::vector<valueType> &_initValue,
+              std::function<valueType(const valueType &, const valueType &)> _merge,
+              std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+              const valueType &_valueZero = valueType(), const modType &_modZero = modType())
     {
         leftRange = 1;
         rightRange = _initValue.size() + 1;
-        m_init(_initValue, _valueZero, _modZero);
+        m_init(_initValue, _merge, _update, _valueZero, _modZero);
     }
 
     void modify(int l, int r, const modType &mod) { modify(1, leftRange, rightRange, l, r, mod); }
@@ -83,9 +90,13 @@ class SegmentTree
         }
     }
 
-    void m_init(const std::vector<valueType> &_initValue, const valueType &_valueZero,
-                const modType &_modZero)
+    void m_init(const std::vector<valueType> &_initValue,
+                std::function<valueType(const valueType &, const valueType &)> _merge,
+                std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+                const valueType &_valueZero, const modType &_modZero)
     {
+        merge = _merge;
+        update = _update;
         valueZero = _valueZero;
         modZero = _modZero;
         nodes.resize((rightRange - leftRange) << 2);
@@ -114,8 +125,10 @@ class SegmentTree
                      query(cur << 1 | 1, (l + r) >> 1, r, L, R));
     }
 
+    std::function<valueType(const valueType &, const valueType &)> merge;
+    std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> update;
     std::vector<SegmentTreeNode<valueType, modType>> nodes;
-    int leftRange, rightRange;
+    int leftRange = 0, rightRange = 0;
     valueType valueZero;
     modType modZero;
 };
