@@ -2,6 +2,7 @@
 
 [![CI Test](https://github.com/ouuan/CPTH/workflows/CI%20Test/badge.svg)](https://github.com/ouuan/CPTH/actions)
 [![codecov](https://codecov.io/gh/ouuan/CPTH/branch/master/graph/badge.svg)](https://codecov.io/gh/ouuan/CPTH)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fa25dcaabe794716896f14a393b5e907)](https://app.codacy.com/manual/ouuan/CPTH)
 
 What is CPTH?
 
