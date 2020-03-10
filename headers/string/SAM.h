@@ -18,7 +18,7 @@ class SAM
         int pa, len;
         std::map<charType, int> ch;
         SAMNode() : pa(-1), len(0) {}
-        int &operator[](int x) { return ch[x]; }
+        int &operator[](charType x) { return ch[x]; }
     };
 
     explicit SAM() { clear(); }
