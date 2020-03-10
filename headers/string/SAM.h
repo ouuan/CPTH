@@ -3,6 +3,7 @@
 #ifndef CPTH_STRING_SAM
 #define CPTH_STRING_SAM
 
+#include <cassert>
 #include <map>
 #include <string>
 #include <vector>
@@ -71,6 +72,7 @@ class SAM
     void clear()
     {
         t.resize(1);
+        g.clear();
         p = 0;
     }
 
@@ -82,9 +84,19 @@ class SAM
 
     unsigned int size() const { return t.size(); }
 
-    const SAMNode &operator[](int x) const { return t[x]; }
+    const SAMNode &operator[](int x) const
+    {
+        assert(x >= 0);
+        assert(x < t.size());
+        return t[x];
+    }
 
-    const std::vector<int> &children(int x) const { return g[x]; }
+    const std::vector<int> &children(int x) const
+    {
+        assert(x >= 0);
+        assert(x < g.size());
+        return g[x];
+    }
 
    private:
     std::vector<SAMNode> t;
