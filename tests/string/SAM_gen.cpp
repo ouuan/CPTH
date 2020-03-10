@@ -12,7 +12,7 @@ int randint(int l, int r) { return rnd() % (r - l + 1) + l; }
 
 int main()
 {
-    int n = randint(1, 500);
+    int n = randint(100, 500);
     int m = randint(1, 5);
 
     while (n--) putchar(randint('a', 'a' + m - 1));

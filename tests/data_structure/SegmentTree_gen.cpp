@@ -12,9 +12,9 @@ int randint(int l, int r) { return rnd() % (r - l + 1) + l; }
 
 int main()
 {
-    int n = randint(1, 10000);
-    int m = randint(1, 10000);
-    int p = randint(1, 1000000000);
+    int n = randint(1000, 10000);
+    int m = randint(1000, 10000);
+    int p = randint(1000, 1000000000);
 
     printf("%d %d %d\n", n, m, p);
 
