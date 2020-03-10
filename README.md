@@ -12,6 +12,8 @@ It's not a collection of snippets: It's a collection of templates. No modificati
 
 It's not a library: These are single-file headers, which is more convenient for competitive programming.
 
+You can see the full list of the current headers [here](HEADER_LIST.md).
+
 ## How to use?
 
 Just paste the headers in the [headers](headers) directory at the beginning of your code.
