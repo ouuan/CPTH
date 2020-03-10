@@ -50,6 +50,6 @@ The root node is the node `0`, its parent is `-1`.
 
 `unsigned int size() const`: Get the number of nodes in the SAM, including the root node.
 
-`const SAMNode &operator[](int x) const`: Get the node x of the SAM.
+`const SAMNode &operator[](unsigned int x) const`: Get the node x of the SAM.
 
-`const std::vector<int> &children(int x) const`: Get the children of the node x on the parent tree.
+`const std::vector<int> &children(unsigned int x) const`: Get the children of the node x on the parent tree.
