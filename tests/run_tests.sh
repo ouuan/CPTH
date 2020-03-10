@@ -12,7 +12,7 @@ for i in */*_gen.cpp; do
     echo "Compiling $test.cpp..."
     g++ $category/$test.cpp -o tmp/$test -Wall -Wshadow -Wextra -Werror -std=c++11 -I ../headers
     echo "Compiling ${test}_gen.cpp..."
-    g++ $category/${test}_gen.cpp -o tmp/${test}_gen -std=c++11
+    g++ $category/${test}_gen.cpp -o tmp/${test}_gen -std=c++11 -I Tree-Generator
     echo "Compiling ${test}_bf.cpp..."
     g++ $category/${test}_bf.cpp -o tmp/${test}_bf -std=c++11
     echo "Compiling ${test}_check.cpp..."
