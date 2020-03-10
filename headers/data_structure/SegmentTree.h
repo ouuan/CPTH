@@ -3,6 +3,8 @@
 #ifndef CPTH_DATA_STRUCTURE_SEGMENTTREE
 #define CPTH_DATA_STRUCTURE_SEGMENTTREE
 
+#include <cassert>
+#include <climits>
 #include <functional>
 #include <vector>
 
@@ -12,7 +14,8 @@ template <typename valueType, typename modType>
 struct SegmentTreeNode
 {
    public:
-    int id, left, right;
+    int id;
+    long long left, right;
     valueType val;
     modType mod;
 };
@@ -24,50 +27,38 @@ class SegmentTree
     explicit SegmentTree() = default;
 
     explicit SegmentTree(
-        int _startPoint, const std::vector<valueType> &_initValue,
-        std::function<valueType(const valueType &, const valueType &)> _merge,
-        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
-    {
-        init(_startPoint, _initValue, _merge, _update, _valueZero, _modZero);
-    }
-
-    explicit SegmentTree(
         const std::vector<valueType> &_initValue,
         std::function<valueType(const valueType &, const valueType &)> _merge,
         std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
+        long long _startPoint = 1, const valueType &_valueZero = valueType(),
+        const modType &_modZero = modType())
     {
-        init(_initValue, _merge, _update, _valueZero, _modZero);
-    }
-
-    void init(int _startPoint, const std::vector<valueType> &_initValue,
-              std::function<valueType(const valueType &, const valueType &)> _merge,
-              std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-              const valueType &_valueZero = valueType(), const modType &_modZero = modType())
-    {
-        leftRange = _startPoint;
-        rightRange = _startPoint + _initValue.size();
-        m_init(_initValue, _merge, _update, _valueZero, _modZero);
+        init(_startPoint, _initValue, _merge, _update, _valueZero, _modZero);
     }
 
     void init(const std::vector<valueType> &_initValue,
               std::function<valueType(const valueType &, const valueType &)> _merge,
               std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-              const valueType &_valueZero = valueType(), const modType &_modZero = modType())
+              long long _startPoint = 1, const valueType &_valueZero = valueType(),
+              const modType &_modZero = modType())
     {
-        leftRange = 1;
-        rightRange = _initValue.size() + 1;
+        assert(_startPoint >= LLONG_MIN / 2);
+        assert(_startPoint <= LLONG_MAX / 2 - _initValue.size());
+        leftRange = _startPoint;
+        rightRange = _startPoint + _initValue.size();
         m_init(_initValue, _merge, _update, _valueZero, _modZero);
     }
 
-    void modify(int l, int r, const modType &mod) { modify(1, leftRange, rightRange, l, r, mod); }
+    void modify(long long l, long long r, const modType &mod)
+    {
+        modify(1, leftRange, rightRange, l, r, mod);
+    }
 
-    void modify(int p, const modType &mod) { modify(p, p + 1, mod); }
+    void modify(long long p, const modType &mod) { modify(p, p + 1, mod); }
 
-    valueType query(int l, int r) { return query(1, leftRange, rightRange, l, r); }
+    valueType query(long long l, long long r) { return query(1, leftRange, rightRange, l, r); }
 
-    valueType query(int p) { return query(p, p + 1); }
+    valueType query(long long p) { return query(p, p + 1); }
 
    private:
     void pushup(int cur) { nodes[cur].val = merge(nodes[cur << 1].val, nodes[cur << 1 | 1].val); }
@@ -79,7 +70,7 @@ class SegmentTree
         nodes[cur].mod = modZero;
     }
 
-    void build(int cur, int l, int r, const std::vector<valueType> &initValue)
+    void build(int cur, long long l, long long r, const std::vector<valueType> &initValue)
     {
         nodes[cur].id = cur;
         nodes[cur].left = l;
@@ -107,7 +98,7 @@ class SegmentTree
         build(1, leftRange, rightRange, _initValue);
     }
 
-    void modify(int cur, int l, int r, int L, int R, const modType &mod)
+    void modify(int cur, long long l, long long r, long long L, long long R, const modType &mod)
     {
         if (l >= R || r <= L) return;
         if (L <= l && r <= R) update(nodes[cur], mod);
@@ -120,7 +111,7 @@ class SegmentTree
         }
     }
 
-    valueType query(int cur, int l, int r, int L, int R)
+    valueType query(int cur, long long l, long long r, long long L, long long R)
     {
         if (l >= R || r <= L) return valueZero;
         if (L <= l && r <= R) return nodes[cur].val;
@@ -132,7 +123,7 @@ class SegmentTree
     std::function<valueType(const valueType &, const valueType &)> merge;
     std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> update;
     std::vector<SegmentTreeNode<valueType, modType>> nodes;
-    int leftRange = 0, rightRange = 0;
+    long long leftRange = 0, rightRange = 0;
     valueType valueZero;
     modType modZero;
 };

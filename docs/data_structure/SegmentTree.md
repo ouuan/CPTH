@@ -47,7 +47,8 @@ template <typename valueType, typename modType>
 struct SegmentTreeNode
 {
    public:
-    int id, left, right;
+    int id;
+    long long left, right;
     valueType val;
     modType mod;
 };
@@ -76,10 +77,11 @@ This function performs the modification `mod` to the `node`. If lazy propagation
 
 ```cpp
 explicit SegmentTree(
-        int _startPoint, const std::vector<valueType> &_initValue,
-        std::function<valueType(const valueType &, const valueType &)> _merge,
-        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
+    const std::vector<valueType> &_initValue,
+    std::function<valueType(const valueType &, const valueType &)> _merge,
+    std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+    long long _startPoint = 1, const valueType &_valueZero = valueType(),
+    const modType &_modZero = modType())
 ```
 
 Construct a segment tree that:
@@ -90,44 +92,24 @@ Construct a segment tree that:
 - the identity element of values is `_valueZero`
 - the no-effect element of mods is `_modZero`
 
-You can use either a function pointer or a `std::function` (for example, a lambda) for `_merge` and `_update`.
-
-You can also call `init(...)` with the same parameters to init a segment tree.
-
----
-
-```cpp
-explicit SegmentTree(
-        const std::vector<valueType> &_initValue,
-        std::function<valueType(const valueType &, const valueType &)> _merge,
-        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-        const valueType &_valueZero = valueType(), const modType &_modZero = modType())
-```
-
-Construct a segment tree that:
-- represents for the segment [1, 1 + `_initValue.size()`)
-- initially a[i] = `initValue[i - 1]`
-- The merge function is `_merge`.
-- The update function is `_update`.
-- the identity element of values is `_valueZero`
-- the no-effect element of mods is `_modZero`
+Note: the `_startPoint` should be in the range `[LLONG_MIN / 2, LLONG_MAX / 2 - _initValue.size()]`.
 
 You can use either a function pointer or a `std::function` (for example, a lambda) for `_merge` and `_update`.
 
-You can also call `init(...)` with the same parameters to init a segment tree.
+You can also call `init(...)` with the same parameters to initialize a segment tree.
 
 ---
 
-`void modify(int l, int r, const modType& mod)`: Perform the modification mod to the subsegment [l, r).
+`void modify(long long l, long long r, const modType& mod)`: Perform the modification mod to the subsegment [l, r).
 
 ---
 
-`void modify(void modify(int p, const modType& mod)`: Perform the modification mod to the single element `a[p]`.
+`void modify(void modify(long long p, const modType& mod)`: Perform the modification mod to the single element `a[p]`.
 
 ---
 
-`valueType query(int l, int r)`: Return the value of the sum (merge result) of subsegment [l, r).
+`valueType query(long long l, long long r)`: Return the value of the sum (merge result) of subsegment [l, r).
 
 ---
 
-`valueType query(int p)`: Return the value of the single element `a[p]`.
+`valueType query(long long p)`: Return the value of the single element `a[p]`.
