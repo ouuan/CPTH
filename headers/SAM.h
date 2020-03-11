@@ -1,7 +1,7 @@
 // Get other headers at https://github.com/ouuan/CPTH
 
-#ifndef CPTH_STRING_SAM
-#define CPTH_STRING_SAM
+#ifndef CPTH_SAM
+#define CPTH_SAM
 
 #include <cassert>
 #include <map>
@@ -103,4 +103,4 @@ class SAM
 };
 }  // namespace CPTH
 
-#endif  // CPTH_STRING_SAM
+#endif  // CPTH_SAM

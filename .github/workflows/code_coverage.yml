@@ -27,19 +27,17 @@ jobs:
     - name: "Generate coverage report"
       run: |
         cd tests
-        for i in */*_gen.cpp; do
-          category=${i%/*}
-          genfile=${i#$category/}
-          test=${genfile%_gen.cpp}
+        for i in *_gen.cpp; do
+          test=${i%_gen.cpp}
           echo "Running the test $test..."
           echo "Compiling $test.cpp..."
-          g++ "$category/$test.cpp" -o "$test" -Wall -Wshadow -Wextra -Werror -fprofile-arcs -ftest-coverage -lgcov -std=c++11 -I "../headers/$category"
+          g++ "$test.cpp" -o "$test" -Wall -Wshadow -Wextra -Werror --coverage -std=c++11 -I "../headers"
           echo "Compiling ${test}_gen.cpp..."
-          g++ "$category/${test}_gen.cpp" -o "${test}_gen" -std=c++11 -I Tree-Generator
+          g++ "${test}_gen.cpp" -o "${test}_gen" -std=c++11 -I Tree-Generator
           echo "Compiling ${test}_bf.cpp..."
-          g++ "$category/${test}_bf.cpp" -o "${test}_bf" -std=c++11
+          g++ "${test}_bf.cpp" -o "${test}_bf" -std=c++11
           echo "Compiling ${test}_check.cpp..."
-          g++ "$category/${test}_check.cpp" -o "${test}_check" -std=c++11 -I testlib
+          g++ "${test}_check.cpp" -o "${test}_check" -std=c++11 -I testlib
           echo "Running ${test}_gen..."
           "./${test}_gen" > "$test.in"
           echo "Running ${test}..."
@@ -49,7 +47,7 @@ jobs:
           echo "Running ${test}_check..."
           "./${test}_check" "$test.in" "$test.out" "${test}_bf.out"
           echo "Generating coverage report..."
-          gcov -n -o . "$category/$test.cpp" > /dev/null
+          gcov -n -o . "$test.cpp" > /dev/null
           echo "The test $test has passed."
         done
 

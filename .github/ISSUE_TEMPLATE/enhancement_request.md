@@ -8,7 +8,7 @@ assignees: ''
 
 **What's the header you are asking for enhancement?**
 
-Path: <!-- the file path to the header -->
+<!-- the name of the header -->
 
 **What's your request?**
 

@@ -17,7 +17,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install clang-format-9
     - name: "Format Codes"
-      run: clang-format-9 -i headers/*/*.h tests/*/*.cpp
+      run: clang-format-9 -i headers/*.h tests/*.cpp
     - name: Commit files
       run: |
         git config --local user.email "clang-format-action@CPTH"

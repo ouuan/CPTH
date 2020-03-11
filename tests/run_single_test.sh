@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if (($# != 2)); then
-    echo './run_single_test.sh <category> <testName>'
+if (($# != 1)); then
+    echo './run_single_test.sh <testName>'
     exit 1
 fi
 
@@ -9,25 +9,23 @@ set -e
 
 mkdir -p tmp
 
-category=$1
-test=$2
-echo "Running the test $test..."
-echo "Compiling $test.cpp..."
-g++ "$category/$test.cpp" -o "tmp/$test" -Wall -Wshadow -Wextra -Werror -std=c++11 -I "../headers/$category"
-echo "Compiling ${test}_gen.cpp..."
-g++ "$category/${test}_gen.cpp" -o "tmp/${test}_gen" -std=c++11 -I Tree-Generator
-echo "Compiling ${test}_bf.cpp..."
-g++ "$category/${test}_bf.cpp" -o "tmp/${test}_bf" -std=c++11
-echo "Compiling ${test}_check.cpp..."
-g++ "$category/${test}_check.cpp" -o "tmp/${test}_check" -std=c++11 -I testlib
-echo "Running ${test}_gen..."
-"tmp/${test}_gen" > "tmp/$test.in"
-echo "Running ${test}..."
-"tmp/$test" < "tmp/$test.in" > "tmp/$test.out"
-echo "Running ${test}_bf..."
-"tmp/${test}_bf" < "tmp/$test.in" > "tmp/${test}_bf.out"
-echo "Running ${test}_check..."
-"tmp/${test}_check" "tmp/$test.in" "tmp/$test.out" "tmp/${test}_bf.out"
-echo "The test $test has passed."
+echo "Running the test $1..."
+echo "Compiling $1.cpp..."
+g++ "$1.cpp" -o "tmp/$1" -Wall -Wshadow -Wextra -Werror -std=c++11 -I "../headers"
+echo "Compiling $1_gen.cpp..."
+g++ "$1_gen.cpp" -o "tmp/$1_gen" -std=c++11 -I Tree-Generator
+echo "Compiling $1_bf.cpp..."
+g++ "$1_bf.cpp" -o "tmp/$1_bf" -std=c++11
+echo "Compiling $1_check.cpp..."
+g++ "$1_check.cpp" -o "tmp/$1_check" -std=c++11 -I testlib
+echo "Running $1_gen..."
+"tmp/$1_gen" > "tmp/$1.in"
+echo "Running $1..."
+"tmp/$1" < "tmp/$1.in" > "tmp/$1.out"
+echo "Running $1_bf..."
+"tmp/$1_bf" < "tmp/$1.in" > "tmp/$1_bf.out"
+echo "Running $1_check..."
+"tmp/$1_check" "tmp/$1.in" "tmp/$1.out" "tmp/$1_bf.out"
+echo "The test $1 has passed."
 
 rm -r tmp

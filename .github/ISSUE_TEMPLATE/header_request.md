@@ -8,9 +8,9 @@ assignees: ''
 
 **What's the header you are asking for?**
 
-- Name: <!-- the English name of the algorithm/data structure -->
+- Common name: <!-- The name competitive programmers call this algorithm/data structure -->
 
-- Category: <!-- data structure / graph / math / DP / string / geometry / miscs, or others -->
+- File name: <!-- the file name you want for this header -->
 
 <!-- What can it do? -->
 

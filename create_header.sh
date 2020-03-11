@@ -1,17 +1,15 @@
 #!/bin/bash
 
-if (($# != 2)); then
-    echo "./create_header.sh <category> <headerName>"
+if (($# != 1)); then
+    echo "./create_header.sh <headerName>"
     exit 1
 fi
 
 set -e
 
-mkdir -p "headers/$1" "docs/$1" "tests/$1"
+touch "headers/$1.h" "docs/$1.md" "tests/$1.md" "tests/$1.cpp" "tests/$1_bf.cpp" "tests/$1_gen.cpp" "tests/$1_check.cpp"
 
-touch "headers/$1/$2.h" "docs/$1/$2.md" "tests/$1/$2.md" "tests/$1/$2.cpp" "tests/$1/$2_bf.cpp" "tests/$1/$2_gen.cpp" "tests/$1/$2_check.cpp"
-
-headerdefine=CPTH_${1^^}_${2^^}
+headerdefine=CPTH_${1^^}
 
 echo "// Get other headers at https://github.com/ouuan/CPTH
 
@@ -25,13 +23,13 @@ namespace CPTH
 
 }  // namespace CPTH
 
-#endif // $headerdefine" > "headers/$1/$2.h"
+#endif // $headerdefine" > "headers/$1.h"
 
-echo "## $2
+echo "## $1
 
-" > "docs/$1/$2.md"
+" > "docs/$1.md"
 
-echo "#include \"$1/$2.h\"
+echo "#include \"$1.h\"
 
 #include <iostream>
 #include <cstdio>
@@ -41,7 +39,7 @@ int main()
 
 
     return 0;
-}" > "tests/$1/$2.cpp"
+}" > "tests/$1.cpp"
 
 echo '#include <iostream>
 #include <cstdio>
@@ -51,7 +49,7 @@ int main()
     
 
     return 0;
-}' > "tests/$1/$2_bf.cpp"
+}' > "tests/$1_bf.cpp"
 
 echo '#include <chrono>
 #include <cstdio>
@@ -70,11 +68,11 @@ int main()
     
 
     return 0;
-}' > "tests/$1/$2_gen.cpp"
+}' > "tests/$1_gen.cpp"
 
-echo '#include "checkers/"' > "tests/$1/$2_check.cpp"
+echo '#include "checkers/"' > "tests/$1_check.cpp"
 
-echo "## $2
+echo "## $1
 
 ### Description
 
@@ -86,13 +84,13 @@ echo "## $2
 
 ### Output
 
-" > "tests/$1/$2.md"
+" > "tests/$1.md"
 
 echo "
-## $2
+## $1
 
 
 
-- [$2.h](headers/$1/$2.h)
-- [$2.md](docs/$1/$2.md)
-- [$2.cpp](tests/$1/$2.cpp)" >> HEADER_LIST.md
+- [$1.h](headers/$1.h)
+- [$1.md](docs/$1.md)
+- [$1.cpp](tests/$1.cpp)" >> HEADER_LIST.md
