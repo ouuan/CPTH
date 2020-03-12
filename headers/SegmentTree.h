@@ -24,14 +24,13 @@ template <typename valueType, typename modType>
 class SegmentTree
 {
    public:
-    explicit SegmentTree() = default;
+    SegmentTree() = default;
 
-    explicit SegmentTree(
-        const std::vector<valueType> &_initValue,
-        std::function<valueType(const valueType &, const valueType &)> _merge,
-        std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
-        long long _startPoint = 1, const valueType &_valueZero = valueType(),
-        const modType &_modZero = modType())
+    SegmentTree(const std::vector<valueType> &_initValue,
+                std::function<valueType(const valueType &, const valueType &)> _merge,
+                std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
+                long long _startPoint = 1, const valueType &_valueZero = valueType(),
+                const modType &_modZero = modType())
     {
         init(_initValue, _merge, _update, _startPoint, _valueZero, _modZero);
     }

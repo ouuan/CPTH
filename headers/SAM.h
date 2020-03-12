@@ -22,7 +22,7 @@ class SAM
         int &operator[](charType x) { return ch[x]; }
     };
 
-    explicit SAM() { clear(); }
+    SAM() { clear(); }
 
     explicit SAM(const charType &x) : SAM() { append(x); }
 
