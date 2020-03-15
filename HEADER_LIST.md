@@ -13,3 +13,11 @@ A suffix automaton template which supports arbitary character type, can construc
 - [SAM.h](headers/SAM.h)
 - [SAM.md](docs/SAM.md)
 - [SAM.cpp](tests/SAM.cpp)
+
+## BIT
+
+A binary indexed tree (Fenwick tree) template which supports element addition, query prefix sum. You only need to implement "add two values", lambda is supported. You can clear it in O(1).
+
+- [BIT.h](headers/BIT.h)
+- [BIT.md](docs/BIT.md)
+- [BIT.cpp](tests/BIT.cpp)
