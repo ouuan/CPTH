@@ -14,7 +14,7 @@ template <typename valueType, typename modType>
 struct SegmentTreeNode
 {
    public:
-    int id;
+    std::size_t id;
     long long left, right;
     valueType val;
     modType mod;
@@ -60,16 +60,19 @@ class SegmentTree
     valueType query(long long p) { return query(p, p + 1); }
 
    private:
-    void pushup(int cur) { nodes[cur].val = merge(nodes[cur << 1].val, nodes[cur << 1 | 1].val); }
+    void pushup(std::size_t cur)
+    {
+        nodes[cur].val = merge(nodes[cur << 1].val, nodes[cur << 1 | 1].val);
+    }
 
-    void pushdown(int cur)
+    void pushdown(std::size_t cur)
     {
         update(nodes[cur << 1], nodes[cur].mod);
         update(nodes[cur << 1 | 1], nodes[cur].mod);
         nodes[cur].mod = modZero;
     }
 
-    void build(int cur, long long l, long long r, const std::vector<valueType> &initValue)
+    void build(std::size_t cur, long long l, long long r, const std::vector<valueType> &initValue)
     {
         nodes[cur].id = cur;
         nodes[cur].left = l;
@@ -97,7 +100,8 @@ class SegmentTree
         build(1, leftRange, rightRange, _initValue);
     }
 
-    void modify(int cur, long long l, long long r, long long L, long long R, const modType &mod)
+    void modify(std::size_t cur, long long l, long long r, long long L, long long R,
+                const modType &mod)
     {
         if (l >= R || r <= L) return;
         if (L <= l && r <= R) update(nodes[cur], mod);
@@ -110,7 +114,7 @@ class SegmentTree
         }
     }
 
-    valueType query(int cur, long long l, long long r, long long L, long long R)
+    valueType query(std::size_t cur, long long l, long long r, long long L, long long R)
     {
         if (l >= R || r <= L) return valueZero;
         if (L <= l && r <= R) return nodes[cur].val;

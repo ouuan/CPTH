@@ -17,10 +17,10 @@ This template supports arbitary character type, can construct the SAM and the pa
 ```cpp
 struct SAMNode
 {
-    int pa, len;
-    std::map<charType, int> ch;
-    SAMNode() : pa(-1), len(0) {}
-    int &operator[](int x) { return ch[x]; }
+    std::size_t pa, len;
+    std::map<charType, std::size_t> ch;
+    SAMNode() : pa(std::vector<SAMNode>().max_size()), len(0) {}
+    std::size_t &operator[](std::size_t x) { return ch[x]; }
 };
 ```
 
@@ -30,7 +30,7 @@ struct SAMNode
 
 `ch`: The child of the node.
 
-The root node is the node `0`, its parent is `-1`.
+The root node is the node `0`, its parent is `std::vector<SAMNode>().max_size()`.
 
 ## Functions
 
@@ -40,7 +40,7 @@ The root node is the node `0`, its parent is `-1`.
 
 `template <typename T> explicit SAM(const T &str)`: The type `T` should be a container of `charType` (for example, `string` is valid if `charType` is `char`, `vector<int>` is valid if `charType` is `int`). Construct a SAM with the container as the string.
 
-`int append(const charType &x)`: Add a character at the back of the SAM, return the number of the node corresponding to the current string.
+`std::size_t append(const charType &x)`: Add a character at the back of the SAM, return the number of the node corresponding to the current string.
 
 `template <typename T> void append(const T &str)`: The type `T` should be a container of `charType`. Add a string at the back of the SAM.
 
@@ -48,8 +48,8 @@ The root node is the node `0`, its parent is `-1`.
 
 `void buildTree()`: Build the parent tree.
 
-`unsigned int size() const`: Get the number of nodes in the SAM, including the root node.
+`std::size_t size() const`: Get the number of nodes in the SAM, including the root node.
 
-`const SAMNode &operator[](unsigned int x) const`: Get the node x of the SAM.
+`const SAMNode &operator[](std::size_t x) const`: Get the node x of the SAM.
 
-`const std::vector<int> &children(unsigned int x) const`: Get the children of the node x on the parent tree.
+`const std::vector<std::size_t> &children(std::size_t x) const`: Get the children of the node x on the parent tree.
