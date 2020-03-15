@@ -26,8 +26,7 @@ int main()
         else
         {
             vector<ll> tmp;
-            for (int i = l; i <= r; ++i)
-                for (auto x : a[i]) tmp.push_back(x);
+            for (int i = l; i <= r; ++i) tmp.insert(tmp.begin(), a[i].begin(), a[i].end());
             nth_element(tmp.begin(), tmp.begin() + c - 1, tmp.end(), greater<ll>());
             cout << tmp[c - 1] << endl;
         }

@@ -16,7 +16,7 @@ struct Operation
     int l, r, id;
     ll target, current, tmp;
     Operation(int _l, int _r, int _id, ll _target)
-        : l(_l), r(_r), id(_id), target(_target), current(0)
+        : l(_l), r(_r), id(_id), target(_target), current(0), tmp(0)
     {}
 };
 
