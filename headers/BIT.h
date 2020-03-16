@@ -29,8 +29,8 @@ class BIT
         tim = 0;
         zero = _zero;
         merge = _merge;
-        vis.resize(_size + 1, 0);
-        a.resize(_size + 1, zero);
+        vis.assign(_size + 1, 0);
+        a.assign(_size + 1, zero);
     }
 
     void add(std::size_t p, const T &x)
