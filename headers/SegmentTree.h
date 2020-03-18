@@ -1,4 +1,4 @@
-// Get other headers at https://github.com/ouuan/CPTH
+// Get more headers at https://github.com/ouuan/CPTH
 
 #ifndef CPTH_SEGMENTTREE
 #define CPTH_SEGMENTTREE

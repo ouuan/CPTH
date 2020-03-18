@@ -11,7 +11,7 @@ touch "headers/$1.h" "docs/$1.md" "tests/$1.md" "tests/$1.cpp" "tests/$1_bf.cpp"
 
 headerdefine=CPTH_${1^^}
 
-echo "// Get other headers at https://github.com/ouuan/CPTH
+echo "// Get more headers at https://github.com/ouuan/CPTH
 
 #ifndef $headerdefine
 #define $headerdefine
