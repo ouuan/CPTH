@@ -71,8 +71,9 @@ class SAM
 
     void clear()
     {
-        t.resize(1);
+        t.clear();
         g.clear();
+        t.resize(1);
         p = 0;
     }
 
