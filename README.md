@@ -26,6 +26,6 @@ Each file has a document in the [docs](docs) directory, you can read them and ha
 
 The codes are based on C++11, there may be problems with other standards.
 
-## Contribute?!
+## Contributing
 
 You can read [CONTRIBUTING.md](CONTRIBUTING.md) for more information.

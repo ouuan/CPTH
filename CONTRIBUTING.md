@@ -8,13 +8,15 @@ We are excited that you are willing to contribute to CPTH! After reading the fol
 
 [Learn Git Branching](https://pcottle.github.com/learnGitBranching/) also helps you become a Git expert, but be calm, even you are not familiar with Git, you can also contribute to CPTH.
 
-## Open issues?
+## Open an issue
 
 Please follow the issue templates when opening issues, that would be very helpful.
 
-## Contribute?!
+## Add a test
 
-That's awesome :rocket:! Let's get started.
+Contributing is easy — you can just write CP problems using CPTH, and upload them in the [tests](tests)!
+
+## Add a header
 
 A header consists of the following:
 
