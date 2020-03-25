@@ -26,7 +26,9 @@ In this template, you only have to implement these key parts of a segment tree, 
 
 To construct a segment tree, you have to choose a type for the **value**, a type for the **modification** (which is `mod` in the codes), implement the `merge` function and the `update` function.
 
-The declaration: `SegmentTree<valueType, modType>`.
+The declaration: `SegmentTree<valueType, modType, elementModificationOnly = false>`.
+
+If `elementModificationOnly` is true, this segment tree can't do range modification, but it will have better performance.
 
 #### Value
 

@@ -20,7 +20,7 @@ struct SegmentTreeNode
     modType mod;
 };
 
-template <typename valueType, typename modType>
+template <typename valueType, typename modType, bool elementModificationOnly = false>
 class SegmentTree
 {
    public:
@@ -53,7 +53,11 @@ class SegmentTree
         modify(1, leftRange, rightRange, l, r, mod);
     }
 
-    void modify(long long p, const modType &mod) { modify(p, p + 1, mod); }
+    void modify(long long p, const modType &mod)
+    {
+        assert(p < LLONG_MAX);
+        modify(1, leftRange, rightRange, p, p + 1, mod);
+    }
 
     valueType query(long long l, long long r) { return query(1, leftRange, rightRange, l, r); }
 
@@ -107,7 +111,7 @@ class SegmentTree
         if (L <= l && r <= R) update(nodes[cur], mod);
         else
         {
-            pushdown(cur);
+            if (!elementModificationOnly) pushdown(cur);
             modify(cur << 1, l, (l + r) >> 1, L, R, mod);
             modify(cur << 1 | 1, (l + r) >> 1, r, L, R, mod);
             pushup(cur);
@@ -118,7 +122,7 @@ class SegmentTree
     {
         if (l >= R || r <= L) return valueZero;
         if (L <= l && r <= R) return nodes[cur].val;
-        pushdown(cur);
+        if (!elementModificationOnly) pushdown(cur);
         return merge(query(cur << 1, l, (l + r) >> 1, L, R),
                      query(cur << 1 | 1, (l + r) >> 1, r, L, R));
     }
