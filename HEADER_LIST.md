@@ -21,3 +21,11 @@ A binary indexed tree (Fenwick tree) template which supports element addition, q
 - [BIT.h](headers/BIT.h)
 - [BIT.md](docs/BIT.md)
 - [BIT.cpp](tests/BIT.cpp)
+
+## MonotonousQueue
+
+Get the maximum value in a FIFO queue  in linear time.
+
+- [MonotonousQueue.h](headers/MonotonousQueue.h)
+- [MonotonousQueue.md](docs/MonotonousQueue.md)
+- [MonotonousQueue.cpp](tests/MonotonousQueue.cpp)
