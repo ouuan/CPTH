@@ -12,7 +12,7 @@ It's not STL: It's for competitive programming.
 
 It's not a collection of snippets: It's a collection of templates. No modification is required, just instantiation.
 
-It's not a library: These are single-file headers, which is more convenient for competitive programming.
+It's not a library: These are single-file headers, which are more convenient for competitive programming.
 
 It's reliable, because all headers are tested with CI tests and code coverage reports.
 
