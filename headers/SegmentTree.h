@@ -50,6 +50,7 @@ class SegmentTree
 
     void modify(long long l, long long r, const modType &mod)
     {
+        assert(!elementModificationOnly);
         modify(1, leftRange, rightRange, l, r, mod);
     }
 
