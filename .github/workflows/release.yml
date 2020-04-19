@@ -20,6 +20,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         draft: true
+        prerelease: true
         files: CPTH-${{ steps.get_version.outputs.VERSION }}.zip
         name: CPTH ${{ steps.get_version.outputs.VERSION }}
       env:
