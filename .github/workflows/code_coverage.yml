@@ -6,7 +6,7 @@ env:
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
 jobs:
-  build:
+  coverage:
     name: "Code Coverage"
     runs-on: ubuntu-latest
 

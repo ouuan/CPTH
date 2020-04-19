@@ -3,7 +3,7 @@ name: "CI Test"
 on: [push, pull_request]
 
 jobs:
-  build:
+  test:
     name: "CI Test on ${{ matrix.os }}"
     runs-on: ${{ matrix.os }}
     strategy:
