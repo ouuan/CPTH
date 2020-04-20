@@ -18,9 +18,7 @@ jobs:
       run: zip -r CPTH-${{ steps.get_version.outputs.VERSION }}.zip headers
     - name: ZIP Minified
       run: |
-        perl -pi -e 's/^\n|^\/\/.*\n|\/\/.*//g' headers/*
-        perl -0pi -e 's/^([^#].*)\n(?=[^#])/\1/mg' headers/*
-        perl -pi -e 's/(?<=[(){}<>,;.=&|!+\-*\/%:?])[^\S\n]+|[^\S\n]+(?=[(){}<>,;.=&|!+\-*\/%:?])|(?<=[^\S\n])[^\S\n]+|^[^\S\n]+|[^\S\n]+$//g' headers/*
+        tools/minify.sh
         zip -r CPTH-${{ steps.get_version.outputs.VERSION }}-minified.zip headers
     - name: Release
       uses: softprops/action-gh-release@v1

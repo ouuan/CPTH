@@ -19,15 +19,10 @@ jobs:
     
     - name: "Run tests"
       shell: bash
-      run: |
-        cd tests
-        ./run_all_tests.sh
+      run: tools/run_all_tests.sh
 
-    - name: "Test Minified"
+    - name: "Run tests with Minified version"
       shell: bash
       run: |
-        perl -pi -e 's/^\n|^\/\/.*\n|\/\/.*//g' headers/*
-        perl -0pi -e 's/^([^#].*)\n(?=[^#])/\1/mg' headers/*
-        perl -pi -e 's/(?<=[(){}<>,;.=&|!+\-*\/%:?])[^\S\n]+|[^\S\n]+(?=[(){}<>,;.=&|!+\-*\/%:?])|(?<=[^\S\n])[^\S\n]+|^[^\S\n]+|[^\S\n]+$//g' headers/*
-        cd tests
-        ./run_all_tests.sh
+        tools/minify.sh
+        tools/run_all_tests.sh

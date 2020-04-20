@@ -25,11 +25,11 @@ jobs:
           echo "Compiling $test.cpp..."
           g++ "$test.cpp" -o "$test" -Wall -Wshadow -Wextra -Werror --coverage -std=c++11 -I "../headers"
           echo "Compiling ${test}_gen.cpp..."
-          g++ "${test}_gen.cpp" -o "${test}_gen" -std=c++11 -I Tree-Generator
+          g++ "${test}_gen.cpp" -o "${test}_gen" -std=c++11 -I ../third_party/Tree-Generator
           echo "Compiling ${test}_bf.cpp..."
           g++ "${test}_bf.cpp" -o "${test}_bf" -std=c++11
           echo "Compiling ${test}_check.cpp..."
-          g++ "${test}_check.cpp" -o "${test}_check" -std=c++11 -I testlib
+          g++ "${test}_check.cpp" -o "${test}_check" -std=c++11 -I ../third_party/testlib
           echo "Running ${test}_gen..."
           "./${test}_gen" > "$test.in"
           echo "Running ${test}..."

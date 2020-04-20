@@ -1,6 +1,6 @@
 [submodule "testlib"]
-	path = tests/testlib
+	path = third_party/testlib
 	url = https://github.com/MikeMirzayanov/testlib
 [submodule "tests/Tree-Generator"]
-	path = tests/Tree-Generator
+	path = third_party/Tree-Generator
 	url = https://github.com/ouuan/Tree-Generator
