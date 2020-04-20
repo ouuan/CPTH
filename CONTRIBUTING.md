@@ -30,9 +30,9 @@ A header consists of the following:
    - `tests/testName_gen.cpp`, generate a testcase for the problem.
    - `tests/testName_check.cpp`, use [testlib](https://github.com/MikeMirzayanov/testlib) to check if the answer is correct.
 
-You can use [create_header.sh](create_header.sh) to generate the above files.
+You can use [create_header.sh](tools/create_header.sh) to generate the above files.
 
-After finishing all the above files, you can run [run_all_tests.sh](tests/run_all_tests.sh).
+After finishing all the above files, you can run [run_all_tests.sh](tools/run_all_tests.sh).
 
 After "All tests passed.", you are done!
 

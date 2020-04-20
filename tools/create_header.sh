@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if (($# != 1)); then
-    echo "./create_header.sh <headerName>"
+    echo "tools/create_header.sh <headerName>"
     exit 1
 fi
 

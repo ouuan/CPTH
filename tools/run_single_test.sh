@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if (($# != 1)); then
-    echo './run_single_test.sh <testName>'
+    echo 'tools//run_single_test.sh <testName>'
     exit 1
 fi
 
