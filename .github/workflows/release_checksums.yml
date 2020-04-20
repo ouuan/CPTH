@@ -29,7 +29,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         prerelease: true
-        name: CP Editor ${{ steps.get_version.outputs.VERSION }}
+        name: CPTH ${{ steps.get_version.outputs.VERSION }}
         files: downloads/CPTH-${{ steps.get_version.outputs.VERSION }}-checksums.txt
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
