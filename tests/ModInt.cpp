@@ -22,12 +22,16 @@ int main()
         switch (op)
         {
             case 1:
-                if (n & 1) x += a;
+                if (n % 3 == 0) x += a;
+                else if (n % 3 == 1)
+                    x += ModInt(m, a);
                 else
                     x = a + x;
                 break;
             case 2:
-                x -= a;
+                if (n & 1) x -= a;
+                else
+                    x -= ModInt(m, a);
                 break;
             case 3:
                 x = a - x;
@@ -38,7 +42,9 @@ int main()
                     x = a * x;
                 break;
             case 5:
-                if (n & 1) x /= a;
+                if (n % 3 == 0) x /= a;
+                else if (n % 3 == 1)
+                    x /= ModInt(m, a);
                 else
                     x = x.toInt() / ModInt(m, a);
                 break;
@@ -47,7 +53,7 @@ int main()
         ModInt ans(x.modulo());
         ans.setValue(x.toInt());
 
-        std::cout << ans.toInt() << '\n';
+        std::cout << pow(ans, m).toInt() << '\n';
     }
 
     return 0;
