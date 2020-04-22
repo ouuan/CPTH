@@ -16,7 +16,7 @@ jobs:
 
     - name: "Get submodules"
       run: git submodule update --init --recursive
-    
+
     - name: "Run tests"
       shell: bash
       run: tools/run_all_tests.sh

@@ -1,5 +1,15 @@
 ## UNRELEASED
 
+## 0.3.0
+
+## Added
+
+- ModInt and ConstantModInt
+
+## Changed
+
+- Split the declaration and the implementation.
+
 ## 0.2.0
 
 ## Added

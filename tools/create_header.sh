@@ -46,7 +46,7 @@ echo '#include <iostream>
 
 int main()
 {
-    
+
 
     return 0;
 }' > "tests/$1_bf.cpp"
@@ -65,7 +65,7 @@ int randint(int l, int r) { return rnd() % (r - l + 1) + l; }
 
 int main()
 {
-    
+
 
     return 0;
 }' > "tests/$1_gen.cpp"

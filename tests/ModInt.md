@@ -2,7 +2,7 @@
 
 ### Description
 
-You are given an integer `x` which is initially zero and a prime number `m`. You are asked to perform `n` operations and print `x` modulo `m` after each operation. 
+You are given an integer `x` which is initially zero and a prime number `m`. You are asked to perform `n` operations and print `x` modulo `m` after each operation.
 
 Here "a mod b = c" means 0 <= c <= b - 1 and there exists an integer p such that a = b * p + c
 
