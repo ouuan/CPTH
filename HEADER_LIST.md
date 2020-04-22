@@ -29,3 +29,19 @@ Get the maximum value in a FIFO queue  in linear time.
 - [MonotonousQueue.h](headers/MonotonousQueue.h)
 - [MonotonousQueue.md](docs/MonotonousQueue.md)
 - [MonotonousQueue.cpp](tests/MonotonousQueue.cpp)
+
+## ModInt
+
+Integer modulo an number.
+
+- [ModInt.h](headers/ModInt.h)
+- [ModInt.md](docs/ModInt.md)
+- [ModInt.cpp](tests/ModInt.cpp)
+
+## ConstantModInt
+
+A faster ModInt with a compile-time constant modulo as a template parameter.
+
+- [ConstantModInt.h](headers/ConstantModInt.h)
+- [ConstantModInt.md](docs/ConstantModInt.md)
+- [ConstantModInt.cpp](tests/ConstantModInt.cpp)
