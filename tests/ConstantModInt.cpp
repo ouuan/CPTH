@@ -35,7 +35,6 @@ int main()
                 else
                     x -= ConstantModInt<mod>(a);
                 break;
-                break;
             case 3:
                 x = a - x;
                 break;
