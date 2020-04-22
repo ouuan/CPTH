@@ -13,50 +13,82 @@ template <typename T, typename cmp = std::less<T>>
 class MonotonousQueue
 {
    public:
-    explicit MonotonousQueue(std::function<bool(const T &)> validate =
-                                 [](const T &) { return true; })
-        : m_validate(validate)
-    {}
+    explicit MonotonousQueue(std::function<bool(const T &)> validate = [](const T &) {
+        return true;
+    });
 
-    void setValidate(std::function<bool(const T &)> validate) { m_validate = validate; }
+    void setValidate(std::function<bool(const T &)> validate);
 
-    bool empty()
-    {
-        removeInvalidElements();
-        return m_empty();
-    }
+    bool empty();
 
-    void clear()
-    {
-        a.clear();
-        head = 0;
-    }
+    void clear();
 
-    void push(const T &x)
-    {
-        while (!m_empty() && cmp()(a.back(), x)) a.pop_back();
-        a.push_back(x);
-    }
+    void push(const T &x);
 
-    T top()
-    {
-        removeInvalidElements();
-        assert(!m_empty());
-        return a[head];
-    }
+    T top();
 
    private:
-    bool m_empty() const { return head >= a.size(); }
+    bool m_empty() const;
 
-    void removeInvalidElements()
-    {
-        while (!m_empty() && !m_validate(a[head])) ++head;
-    }
+    void removeInvalidElements();
 
     std::vector<T> a;
     std::size_t head = 0;
     std::function<bool(const T &)> m_validate;
 };
+
+template <typename T, typename cmp>
+MonotonousQueue<T, cmp>::MonotonousQueue(std::function<bool(const T &)> validate)
+    : m_validate(validate)
+{}
+
+template <typename T, typename cmp>
+void MonotonousQueue<T, cmp>::setValidate(std::function<bool(const T &)> validate)
+{
+    m_validate = validate;
+}
+
+template <typename T, typename cmp>
+bool MonotonousQueue<T, cmp>::empty()
+{
+    removeInvalidElements();
+    return m_empty();
+}
+
+template <typename T, typename cmp>
+void MonotonousQueue<T, cmp>::clear()
+{
+    a.clear();
+    head = 0;
+}
+
+template <typename T, typename cmp>
+void MonotonousQueue<T, cmp>::push(const T &x)
+{
+    while (!m_empty() && cmp()(a.back(), x)) a.pop_back();
+    a.push_back(x);
+}
+
+template <typename T, typename cmp>
+T MonotonousQueue<T, cmp>::top()
+{
+    removeInvalidElements();
+    assert(!m_empty());
+    return a[head];
+}
+
+template <typename T, typename cmp>
+bool MonotonousQueue<T, cmp>::m_empty() const
+{
+    return head >= a.size();
+}
+
+template <typename T, typename cmp>
+void MonotonousQueue<T, cmp>::removeInvalidElements()
+{
+    while (!m_empty() && !m_validate(a[head])) ++head;
+}
+
 }  // namespace CPTH
 
 #endif  // CPTH_MONOTONOUSQUEUE
