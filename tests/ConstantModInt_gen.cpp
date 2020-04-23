@@ -21,7 +21,7 @@ int gcd(int x, int y)
 int main()
 {
     int n = randint(1000, 200000);
-    int m = 114514;
+    int m = 404404404;
 
     printf("%d %d\n", n, m);
 

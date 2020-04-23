@@ -6,7 +6,7 @@
 
 using CPTH::ConstantModInt;
 
-const int mod = 114514;
+const int mod = 404404404;
 
 int gcd(int x, int y)
 {
