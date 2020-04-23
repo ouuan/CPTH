@@ -6,6 +6,11 @@
 
 using CPTH::ModInt;
 
+int gcd(int x, int y)
+{
+    return y ? gcd(y, x % y) : x;
+}
+
 int main()
 {
     int n, m;
@@ -14,6 +19,27 @@ int main()
     ModInt x(m);
 
     assert(m == x.modulo());
+
+    int phi = 1;
+
+    int k = m;
+
+    for (int i = 2; i * i <= k; ++i)
+    {
+        if (k % i == 0)
+        {
+            phi *= (i - 1);
+            k /= i;
+            while (k % i == 0)
+            {
+                phi *= i;
+                k /= i;
+            }
+        }
+    }
+
+    if (k > 1)
+        phi *= (k - 1);
 
     while (n--)
     {
@@ -54,19 +80,23 @@ int main()
                     x = a * x;
                 break;
             case 5:
+            {
+                auto old = x;
                 if (n % 3 == 0)
                     x /= a;
                 else if (n % 3 == 1)
                     x /= ModInt(m, a);
                 else
                     x = x.toInt() / ModInt(m, a);
+                assert(x * a == old);
                 break;
+            }
         }
 
         ModInt ans(x.modulo());
         ans.setValue(x.toInt());
 
-        std::cout << pow(ans, m).toInt() << '\n';
+        std::cout << (gcd(ans.toInt(), m) == 1 ? pow(ans, phi + 1).toInt() : ans.toInt()) << '\n';
     }
 
     return 0;

@@ -13,23 +13,15 @@ int randint(int l, int r)
     return rnd() % (r - l + 1) + l;
 }
 
-bool nprime(int x)
+int gcd(int x, int y)
 {
-    for (int i = 2; i * i <= x; ++i)
-    {
-        if (x % i == 0)
-            return true;
-    }
-    return false;
+    return y ? gcd(y, x % y) : x;
 }
 
 int main()
 {
-    int n = randint(1000, 1000000);
+    int n = randint(1000, 200000);
     int m = randint(2, 1000000000);
-
-    while (nprime(m))
-        m = randint(2, 1000000000);
 
     printf("%d %d\n", n, m);
 
@@ -40,7 +32,12 @@ int main()
         if (op <= 4)
             printf("%d\n", randint(0, 1000000000));
         else
-            printf("%d\n", randint(1, m - 1));
+        {
+            int x = randint(1, 1000000000);
+            while (gcd(x, m) != 1)
+                x = randint(1, 1000000000);
+            printf("%d\n", x);
+        }
     }
 
     return 0;

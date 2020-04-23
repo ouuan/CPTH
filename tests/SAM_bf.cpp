@@ -13,9 +13,9 @@ int main()
 
     map<string, int> cnt;
 
-    for (int i = 0; i < s.size(); ++i)
+    for (int i = 0; i < (int)s.size(); ++i)
     {
-        for (int j = 1; j <= s.size() - i; ++j)
+        for (int j = 1; j <= (int)s.size() - i; ++j)
         {
             ++cnt[s.substr(i, j)];
         }

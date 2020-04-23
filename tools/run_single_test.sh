@@ -13,9 +13,9 @@ echo "Running the test $1..."
 echo "Compiling $1.cpp..."
 g++ "tests/$1.cpp" -o ".tmp/$1" -Wall -Wshadow -Wextra -Werror -std=c++11 -I "headers"
 echo "Compiling $1_gen.cpp..."
-g++ "tests/$1_gen.cpp" -o ".tmp/$1_gen" -std=c++11 -I third_party/Tree-Generator
+g++ "tests/$1_gen.cpp" -o ".tmp/$1_gen" -Wall -Wshadow -Wextra -Werror -std=c++11 -I third_party/Tree-Generator
 echo "Compiling $1_bf.cpp..."
-g++ "tests/$1_bf.cpp" -o ".tmp/$1_bf" -std=c++11
+g++ "tests/$1_bf.cpp" -o ".tmp/$1_bf" -Wall -Wshadow -Wextra -Werror -std=c++11
 echo "Compiling $1_check.cpp..."
 g++ "tests/$1_check.cpp" -o ".tmp/$1_check" -std=c++11 -I third_party/testlib
 echo "Running $1_gen..."

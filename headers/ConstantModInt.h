@@ -68,7 +68,7 @@ class ConstantModInt
 
    private:
     static int modadd(int x, int y);
-    static int gcd(int x, int y);
+    static int exgcd(int a, int b, int &x, int &y);
 
     int val;
 };
@@ -107,8 +107,9 @@ template <int mod>
 ConstantModInt<mod> ConstantModInt<mod>::operator~() const
 {
     assert(val != 0);  // don't merge this into the next one so that the bug can be easily found
-    assert(gcd(val, mod) == 1);
-    return pow(mod - 2);
+    int x, y;
+    assert(exgcd(val, mod, x, y) == 1);
+    return x;
 }
 
 template <int mod>
@@ -258,9 +259,19 @@ int ConstantModInt<mod>::modadd(int x, int y)
 }
 
 template <int mod>
-int ConstantModInt<mod>::gcd(int x, int y)
+int ConstantModInt<mod>::exgcd(int a, int b, int &x, int &y)
 {
-    return y ? gcd(y, x % y) : x;
+    if (b == 0)
+    {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    int g = exgcd(b, a % b, x, y);
+    int t = x;
+    x = y;
+    y = t - a / b * y;
+    return g;
 }
 
 }  // namespace CPTH

@@ -1,17 +1,19 @@
 #include <cstdio>
 #include <iostream>
 
-int qpow(int x, int y, int mod)
+int exgcd(int a, int b, int &x, int &y)
 {
-    int out = 1;
-    while (y)
+    if (b == 0)
     {
-        if (y & 1)
-            out = 1ll * out * x % mod;
-        x = 1ll * x * x % mod;
-        y >>= 1;
+        x = 1;
+        y = 0;
+        return a;
     }
-    return out;
+    int g = exgcd(b, a % b, x, y);
+    int t = x;
+    x = y;
+    y = t - a / b * y;
+    return g;
 }
 
 int main()
@@ -40,8 +42,13 @@ int main()
                 x = 1ll * x * a % m;
                 break;
             case 5:
-                x = 1ll * x * qpow(a, m - 2, m) % m;
+            {
+                int xx, yy;
+                exgcd(a, m, xx, yy);
+                xx = (xx + m) % m;
+                x = 1ll * x * xx % m;
                 break;
+            }
         }
         std::cout << x << '\n';
     }

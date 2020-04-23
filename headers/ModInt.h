@@ -52,7 +52,7 @@ class ModInt
 
    private:
     int modadd(int x, int y) const;
-    static int gcd(int x, int y);
+    static int exgcd(int a, int b, int &x, int &y);
 
     int val;
     int mod;
@@ -86,8 +86,9 @@ ModInt ModInt::operator-() const
 ModInt ModInt::operator~() const
 {
     assert(val != 0);  // don't merge this into the next one so that the bug can be easily found
-    assert(gcd(val, mod) == 1);
-    return pow(mod - 2);
+    int x, y;
+    assert(exgcd(val, mod, x, y) == 1);
+    return ModInt(mod, x);
 }
 
 ModInt operator+(ModInt x, ModInt y)
@@ -219,9 +220,19 @@ int ModInt::modadd(int x, int y) const
     return (x += y) >= mod ? x - mod : x;
 }
 
-int ModInt::gcd(int x, int y)
+int ModInt::exgcd(int a, int b, int &x, int &y)
 {
-    return y ? gcd(y, x % y) : x;
+    if (b == 0)
+    {
+        x = 1;
+        y = 0;
+        return a;
+    }
+    int g = exgcd(b, a % b, x, y);
+    int t = x;
+    x = y;
+    y = t - a / b * y;
+    return g;
 }
 
 }  // namespace CPTH

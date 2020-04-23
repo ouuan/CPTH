@@ -13,10 +13,15 @@ int randint(int l, int r)
     return rnd() % (r - l + 1) + l;
 }
 
+int gcd(int x, int y)
+{
+    return y ? gcd(y, x % y) : x;
+}
+
 int main()
 {
-    int n = randint(100, 1000000);
-    int m = 998244353;
+    int n = randint(1000, 200000);
+    int m = 114514;
 
     printf("%d %d\n", n, m);
 
@@ -27,7 +32,12 @@ int main()
         if (op <= 4)
             printf("%d\n", randint(0, 1000000000));
         else
-            printf("%d\n", randint(1, m - 1));
+        {
+            int x = randint(1, 1000000000);
+            while (gcd(x, m) != 1)
+                x = randint(1, 1000000000);
+            printf("%d\n", x);
+        }
     }
 
     return 0;
