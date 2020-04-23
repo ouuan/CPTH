@@ -19,19 +19,21 @@ int main()
     CPTH::MonotonousQueue<pii, std::greater<pii>> mn([&](pii x) {
         return x.second > i - k;
     });
+
     CPTH::MonotonousQueue<pii> mx;
+
+    assert(mx.empty());
+    for (i = 1; i <= 10000; ++i)
+    {
+        mx.push({i * 233, i});
+        assert(mx.top() == pii(i * 233, i));
+    }
+    mx.clear();
+    assert(mx.empty());
+
     mx.setValidate([&](pii x) {
         return x.second > i - k;
     });
-
-    assert(mn.empty());
-    for (i = 1; i <= 10000; ++i)
-    {
-        mn.push({i * 233, i});
-        assert(!mn.empty());
-    }
-    mn.clear();
-    assert(mn.empty());
 
     for (i = 0; i < k - 1; ++i)
     {
