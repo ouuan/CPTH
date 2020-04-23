@@ -52,16 +52,24 @@ int main()
         {
             int x;
             cin >> x;
-            t.modify(l, r + 1, {0, x});
+            if (l == r) t.modify(l, {0, x});
+            else
+                t.modify(l, r + 1, {0, x});
         }
         else if (opt == 2)
         {
             int x;
             cin >> x;
-            t.modify(l, r + 1, {x, 1});
+            if (l == r) t.modify(l, {x, 1});
+            else
+                t.modify(l, r + 1, {x, 1});
         }
         else
-            cout << t.query(l, r + 1) << endl;
+        {
+            if (l == r) cout << t.query(l) << endl;
+            else
+                cout << t.query(l, r + 1) << endl;
+        }
     }
 
     return 0;

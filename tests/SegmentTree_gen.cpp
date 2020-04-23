@@ -12,8 +12,8 @@ int randint(int l, int r) { return rnd() % (r - l + 1) + l; }
 
 int main()
 {
-    int n = randint(1000, 10000);
-    int m = randint(1000, 10000);
+    int n = randint(100, 1000);
+    int m = randint(10000, 100000);
     int p = randint(1000, 1000000000);
 
     printf("%d %d %d\n", n, m, p);

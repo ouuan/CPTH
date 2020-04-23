@@ -105,7 +105,7 @@ int main()
 
     ans.resize(qid);
     bitk.init(n, plus<ll>());
-    bitb.init(n, plus<ll>());
+    bitb = CPTH::BIT<ll>(n, plus<ll>());
     solve(-n, n + 1, ops);
 
     for (auto x : ans) printf("%d\n", -x);
