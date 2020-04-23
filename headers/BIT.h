@@ -83,7 +83,8 @@ T BIT<T>::query(std::size_t p) const
     T out = zero;
     for (; p; p -= lowbit(p))
     {
-        if (vis[p] == tim) out = merge(out, a[p]);
+        if (vis[p] == tim)
+            out = merge(out, a[p]);
     }
     return out;
 }

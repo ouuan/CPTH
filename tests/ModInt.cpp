@@ -22,14 +22,16 @@ int main()
         switch (op)
         {
             case 1:
-                if (n % 3 == 0) x += a;
+                if (n % 3 == 0)
+                    x += a;
                 else if (n % 3 == 1)
                     x += ModInt(m, a);
                 else
                     x = a + x;
                 break;
             case 2:
-                if (n & 1) x -= a;
+                if (n & 1)
+                    x -= a;
                 else
                     x -= ModInt(m, a);
                 break;
@@ -37,12 +39,14 @@ int main()
                 x = a - x;
                 break;
             case 4:
-                if (n & 1) x *= a;
+                if (n & 1)
+                    x *= a;
                 else
                     x = a * x;
                 break;
             case 5:
-                if (n % 3 == 0) x /= a;
+                if (n % 3 == 0)
+                    x /= a;
                 else if (n % 3 == 1)
                     x /= ModInt(m, a);
                 else

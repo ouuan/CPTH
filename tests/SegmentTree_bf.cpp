@@ -12,7 +12,8 @@ int main()
 
     vector<int> a(n);
 
-    for (auto &x : a) cin >> x;
+    for (auto &x : a)
+        cin >> x;
 
     while (m--)
     {
@@ -24,20 +25,23 @@ int main()
             {
                 int x;
                 cin >> x;
-                for (int i = l - 1; i < r; ++i) a[i] = 1ll * a[i] * x % p;
+                for (int i = l - 1; i < r; ++i)
+                    a[i] = 1ll * a[i] * x % p;
                 break;
             }
             case 2:
             {
                 int x;
                 cin >> x;
-                for (int i = l - 1; i < r; ++i) a[i] = (a[i] + x) % p;
+                for (int i = l - 1; i < r; ++i)
+                    a[i] = (a[i] + x) % p;
                 break;
             }
             case 3:
             {
                 int ans = 0;
-                for (int i = l - 1; i < r; ++i) ans = (ans + a[i]) % p;
+                for (int i = l - 1; i < r; ++i)
+                    ans = (ans + a[i]) % p;
                 cout << ans << endl;
                 break;
             }

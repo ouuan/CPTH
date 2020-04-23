@@ -28,7 +28,10 @@ void add(int p, int x)
     bitb.add(p, (1 - p) * x);
 }
 
-ll query(int p) { return bitk.query(p) * p + bitb.query(p); }
+ll query(int p)
+{
+    return bitk.query(p) * p + bitb.query(p);
+}
 
 void clear()
 {
@@ -46,14 +49,16 @@ void solve(int l, int r, vector<Operation> &ops)
     {
         for (auto op : ops)
         {
-            if (~op.id) ans[op.id] = l;
+            if (~op.id)
+                ans[op.id] = l;
         }
         return;
     }
     clear();
     for (auto &op : ops)
     {
-        if (~op.id) op.tmp = query(op.r) - query(op.l - 1);
+        if (~op.id)
+            op.tmp = query(op.r) - query(op.l - 1);
         else if (op.target < mid)
         {
             add(op.l, 1);
@@ -65,13 +70,15 @@ void solve(int l, int r, vector<Operation> &ops)
     {
         if (op.id == -1)
         {
-            if (op.target < mid) lop.push_back(op);
+            if (op.target < mid)
+                lop.push_back(op);
             else
                 rop.push_back(op);
         }
         else
         {
-            if (op.current + op.tmp >= op.target) lop.push_back(op);
+            if (op.current + op.tmp >= op.target)
+                lop.push_back(op);
             else
             {
                 op.current += op.tmp;
@@ -98,7 +105,8 @@ int main()
         int op, l, r;
         ll x;
         scanf("%d%d%d%lld", &op, &l, &r, &x);
-        if (op == 1) ops.emplace_back(l, r, -1, -x);
+        if (op == 1)
+            ops.emplace_back(l, r, -1, -x);
         else
             ops.emplace_back(l, r, qid++, x);
     }
@@ -108,7 +116,8 @@ int main()
     bitb = CPTH::BIT<ll>(n, plus<ll>());
     solve(-n, n + 1, ops);
 
-    for (auto x : ans) printf("%d\n", -x);
+    for (auto x : ans)
+        printf("%d\n", -x);
 
     return 0;
 }

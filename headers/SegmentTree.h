@@ -144,7 +144,8 @@ void SegmentTree<valueType, modType, elementModificationOnly>::build(
     nodes[cur].left = l;
     nodes[cur].right = r;
     nodes[cur].mod = modZero;
-    if (l == r - 1) nodes[cur].val = initValue[l - leftRange];
+    if (l == r - 1)
+        nodes[cur].val = initValue[l - leftRange];
     else
     {
         build(cur << 1, l, (l + r) >> 1, initValue);
@@ -174,11 +175,14 @@ void SegmentTree<valueType, modType, elementModificationOnly>::modify(std::size_
                                                                       long long R,
                                                                       const modType &mod)
 {
-    if (l >= R || r <= L) return;
-    if (L <= l && r <= R) update(nodes[cur], mod);
+    if (l >= R || r <= L)
+        return;
+    if (L <= l && r <= R)
+        update(nodes[cur], mod);
     else
     {
-        if (!elementModificationOnly) pushdown(cur);
+        if (!elementModificationOnly)
+            pushdown(cur);
         modify(cur << 1, l, (l + r) >> 1, L, R, mod);
         modify(cur << 1 | 1, (l + r) >> 1, r, L, R, mod);
         pushup(cur);
@@ -190,9 +194,12 @@ valueType SegmentTree<valueType, modType, elementModificationOnly>::query(std::s
                                                                           long long l, long long r,
                                                                           long long L, long long R)
 {
-    if (l >= R || r <= L) return valueZero;
-    if (L <= l && r <= R) return nodes[cur].val;
-    if (!elementModificationOnly) pushdown(cur);
+    if (l >= R || r <= L)
+        return valueZero;
+    if (L <= l && r <= R)
+        return nodes[cur].val;
+    if (!elementModificationOnly)
+        pushdown(cur);
     return merge(query(cur << 1, l, (l + r) >> 1, L, R),
                  query(cur << 1 | 1, (l + r) >> 1, r, L, R));
 }

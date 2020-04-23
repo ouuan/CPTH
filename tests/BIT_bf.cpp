@@ -21,12 +21,16 @@ int main()
         cin >> type >> l >> r >> c;
         if (type == 1)
         {
-            for (int i = l; i <= r; ++i) { a[i].push_back(c); }
+            for (int i = l; i <= r; ++i)
+            {
+                a[i].push_back(c);
+            }
         }
         else
         {
             vector<ll> tmp;
-            for (int i = l; i <= r; ++i) tmp.insert(tmp.begin(), a[i].begin(), a[i].end());
+            for (int i = l; i <= r; ++i)
+                tmp.insert(tmp.begin(), a[i].begin(), a[i].end());
             nth_element(tmp.begin(), tmp.begin() + c - 1, tmp.end(), greater<ll>());
             cout << tmp[c - 1] << endl;
         }

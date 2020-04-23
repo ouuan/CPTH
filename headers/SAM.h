@@ -18,8 +18,12 @@ class SAM
     {
         std::size_t pa, len;
         std::map<charType, std::size_t> ch;
-        SAMNode() : pa(std::vector<SAMNode>().max_size()), len(0) {}
-        std::size_t &operator[](std::size_t x) { return ch[x]; }
+        SAMNode() : pa(std::vector<SAMNode>().max_size()), len(0)
+        {}
+        std::size_t &operator[](std::size_t x)
+        {
+            return ch[x];
+        }
     };
 
     SAM();
@@ -80,11 +84,13 @@ std::size_t SAM<charType>::append(const charType &x)
         t[p][x] = np;
         p = t[p].pa;
     }
-    if (p == t.max_size()) t[np].pa = 0;
+    if (p == t.max_size())
+        t[np].pa = 0;
     else
     {
         std::size_t q = t[p][x];
-        if (t[q].len == t[p].len + 1) t[np].pa = q;
+        if (t[q].len == t[p].len + 1)
+            t[np].pa = q;
         else
         {
             std::size_t nq = t.size();
@@ -105,7 +111,8 @@ template <typename charType>
 template <typename T>
 void SAM<charType>::append(const T &str)
 {
-    for (auto x : str) append(x);
+    for (auto x : str)
+        append(x);
 }
 
 template <typename charType>
@@ -121,7 +128,8 @@ template <typename charType>
 void SAM<charType>::buildTree()
 {
     g.assign(t.size(), std::vector<std::size_t>());
-    for (std::size_t i = 1; i < t.size(); ++i) g[t[i].pa].push_back(i);
+    for (std::size_t i = 1; i < t.size(); ++i)
+        g[t[i].pa].push_back(i);
 }
 
 template <typename charType>

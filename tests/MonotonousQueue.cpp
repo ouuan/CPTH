@@ -13,11 +13,16 @@ int main()
     scanf("%d%d", &n, &k);
 
     std::vector<int> a(n);
-    for (i = 0; i < n; ++i) scanf("%d", &a[i]);
+    for (i = 0; i < n; ++i)
+        scanf("%d", &a[i]);
 
-    CPTH::MonotonousQueue<pii, std::greater<pii>> mn([&](pii x) { return x.second > i - k; });
+    CPTH::MonotonousQueue<pii, std::greater<pii>> mn([&](pii x) {
+        return x.second > i - k;
+    });
     CPTH::MonotonousQueue<pii> mx;
-    mx.setValidate([&](pii x) { return x.second > i - k; });
+    mx.setValidate([&](pii x) {
+        return x.second > i - k;
+    });
 
     assert(mn.empty());
     for (i = 1; i <= 10000; ++i)

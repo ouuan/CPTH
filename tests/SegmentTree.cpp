@@ -42,7 +42,11 @@ int main()
     }
 
     SegmentTree<int, Modification> t(
-        a, [](int x, int y) { return (x + y) % p; }, update);
+        a,
+        [](int x, int y) {
+            return (x + y) % p;
+        },
+        update);
 
     while (m--)
     {
@@ -52,7 +56,8 @@ int main()
         {
             int x;
             cin >> x;
-            if (l == r) t.modify(l, {0, x});
+            if (l == r)
+                t.modify(l, {0, x});
             else
                 t.modify(l, r + 1, {0, x});
         }
@@ -60,13 +65,15 @@ int main()
         {
             int x;
             cin >> x;
-            if (l == r) t.modify(l, {x, 1});
+            if (l == r)
+                t.modify(l, {x, 1});
             else
                 t.modify(l, r + 1, {x, 1});
         }
         else
         {
-            if (l == r) cout << t.query(l) << endl;
+            if (l == r)
+                cout << t.query(l) << endl;
             else
                 cout << t.query(l, r + 1) << endl;
         }

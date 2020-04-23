@@ -6,7 +6,8 @@ int qpow(int x, int y, int mod)
     int out = 1;
     while (y)
     {
-        if (y & 1) out = 1ll * out * x % mod;
+        if (y & 1)
+            out = 1ll * out * x % mod;
         x = 1ll * x * x % mod;
         y >>= 1;
     }

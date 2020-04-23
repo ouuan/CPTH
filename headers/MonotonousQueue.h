@@ -65,7 +65,8 @@ void MonotonousQueue<T, cmp>::clear()
 template <typename T, typename cmp>
 void MonotonousQueue<T, cmp>::push(const T &x)
 {
-    while (!m_empty() && cmp()(a.back(), x)) a.pop_back();
+    while (!m_empty() && cmp()(a.back(), x))
+        a.pop_back();
     a.push_back(x);
 }
 
@@ -86,7 +87,8 @@ bool MonotonousQueue<T, cmp>::m_empty() const
 template <typename T, typename cmp>
 void MonotonousQueue<T, cmp>::removeInvalidElements()
 {
-    while (!m_empty() && !m_validate(a[head])) ++head;
+    while (!m_empty() && !m_validate(a[head]))
+        ++head;
 }
 
 }  // namespace CPTH

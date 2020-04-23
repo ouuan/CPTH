@@ -62,12 +62,24 @@ ModInt::ModInt(int modulo, long long value) : mod(modulo)
     val = (value % mod + mod) % mod;
 }
 
-int ModInt::toInt() const { return val; }
-int ModInt::modulo() const { return mod; }
+int ModInt::toInt() const
+{
+    return val;
+}
+int ModInt::modulo() const
+{
+    return mod;
+}
 
-void ModInt::setValue(long long x) { val = (x % mod + mod) % mod; }
+void ModInt::setValue(long long x)
+{
+    val = (x % mod + mod) % mod;
+}
 
-ModInt ModInt::operator-() const { return {mod, val ? mod - val : 0}; }
+ModInt ModInt::operator-() const
+{
+    return {mod, val ? mod - val : 0};
+}
 ModInt ModInt::operator~() const
 {
     assert(val != 0);  // don't merge this into the next one so that the bug can be easily found
@@ -80,42 +92,69 @@ ModInt operator+(ModInt x, ModInt y)
     assert(x.mod == y.mod);
     return {x.mod, x.modadd(x.val, y.val)};
 }
-ModInt operator+(ModInt x, long long y) { return x + ModInt(x.mod, y); }
-ModInt operator+(long long x, ModInt y) { return y + x; }
+ModInt operator+(ModInt x, long long y)
+{
+    return x + ModInt(x.mod, y);
+}
+ModInt operator+(long long x, ModInt y)
+{
+    return y + x;
+}
 ModInt &ModInt::operator+=(ModInt y)
 {
     assert(mod == y.modulo());
     return *this = *this + y;
 }
-ModInt &ModInt::operator+=(long long y) { return *this = *this + y; }
+ModInt &ModInt::operator+=(long long y)
+{
+    return *this = *this + y;
+}
 
 ModInt operator-(ModInt x, ModInt y)
 {
     assert(x.mod == y.mod);
     return x + (-y);
 }
-ModInt operator-(ModInt x, long long y) { return x - ModInt(x.mod, y); }
-ModInt operator-(long long x, ModInt y) { return ModInt(y.mod, x) - y; }
+ModInt operator-(ModInt x, long long y)
+{
+    return x - ModInt(x.mod, y);
+}
+ModInt operator-(long long x, ModInt y)
+{
+    return ModInt(y.mod, x) - y;
+}
 ModInt &ModInt::operator-=(ModInt y)
 {
     assert(mod == y.modulo());
     return *this = *this - y;
 }
-ModInt &ModInt::operator-=(long long y) { return *this = *this - y; }
+ModInt &ModInt::operator-=(long long y)
+{
+    return *this = *this - y;
+}
 
 ModInt operator*(ModInt x, ModInt y)
 {
     assert(x.mod == y.mod);
     return {x.mod, (long long)x.val * y.val % x.mod};
 }
-ModInt operator*(ModInt x, long long y) { return x * ModInt(x.mod, y); }
-ModInt operator*(long long x, ModInt y) { return y * x; }
+ModInt operator*(ModInt x, long long y)
+{
+    return x * ModInt(x.mod, y);
+}
+ModInt operator*(long long x, ModInt y)
+{
+    return y * x;
+}
 ModInt &ModInt::operator*=(ModInt y)
 {
     assert(mod == y.modulo());
     return *this = *this * y;
 }
-ModInt &ModInt::operator*=(long long y) { return *this = *this * y; }
+ModInt &ModInt::operator*=(long long y)
+{
+    return *this = *this * y;
+}
 
 ModInt operator/(ModInt x, ModInt y)
 {
@@ -150,17 +189,27 @@ ModInt ModInt::pow(unsigned long long y) const
     ModInt x = *this, out(mod, 1);
     while (y)
     {
-        if (y & 1) out *= x;
+        if (y & 1)
+            out *= x;
         x *= x;
         y >>= 1;
     }
     return out;
 }
-ModInt pow(ModInt x, unsigned long long y) { return x.pow(y); }
+ModInt pow(ModInt x, unsigned long long y)
+{
+    return x.pow(y);
+}
 
-int ModInt::modadd(int x, int y) const { return (x += y) >= mod ? x - mod : x; }
+int ModInt::modadd(int x, int y) const
+{
+    return (x += y) >= mod ? x - mod : x;
+}
 
-int ModInt::gcd(int x, int y) { return y ? gcd(y, x % y) : x; }
+int ModInt::gcd(int x, int y)
+{
+    return y ? gcd(y, x % y) : x;
+}
 
 }  // namespace CPTH
 

@@ -222,7 +222,8 @@ ConstantModInt<mod> ConstantModInt<mod>::pow(unsigned long long y) const
     ConstantModInt<mod> x(*this), out(1);
     while (y)
     {
-        if (y & 1) out *= x;
+        if (y & 1)
+            out *= x;
         x *= x;
         y >>= 1;
     }
