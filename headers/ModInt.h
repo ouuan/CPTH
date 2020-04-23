@@ -10,7 +10,7 @@ namespace CPTH
 class ModInt
 {
    public:
-    ModInt(int modulo, long long value = 0);
+    explicit ModInt(int modulo, long long value = 0);
 
     int toInt() const;
     int modulo() const;
@@ -43,6 +43,9 @@ class ModInt
     friend ModInt operator/(long long x, ModInt y);
     ModInt &operator/=(ModInt y);
     ModInt &operator/=(long long y);
+
+    friend bool operator==(ModInt x, ModInt y);
+    friend bool operator<(ModInt x, ModInt y);
 
     ModInt pow(unsigned long long y) const;
     friend ModInt pow(ModInt x, unsigned long long y);
@@ -78,7 +81,7 @@ void ModInt::setValue(long long x)
 
 ModInt ModInt::operator-() const
 {
-    return {mod, val ? mod - val : 0};
+    return ModInt{mod, val ? mod - val : 0};
 }
 ModInt ModInt::operator~() const
 {
@@ -90,7 +93,7 @@ ModInt ModInt::operator~() const
 ModInt operator+(ModInt x, ModInt y)
 {
     assert(x.mod == y.mod);
-    return {x.mod, x.modadd(x.val, y.val)};
+    return ModInt{x.mod, x.modadd(x.val, y.val)};
 }
 ModInt operator+(ModInt x, long long y)
 {
@@ -136,7 +139,7 @@ ModInt &ModInt::operator-=(long long y)
 ModInt operator*(ModInt x, ModInt y)
 {
     assert(x.mod == y.mod);
-    return {x.mod, (long long)x.val * y.val % x.mod};
+    return ModInt{x.mod, (long long)x.val * y.val % x.mod};
 }
 ModInt operator*(ModInt x, long long y)
 {
@@ -182,6 +185,16 @@ ModInt &ModInt::operator/=(long long y)
 {
     assert(y % mod != 0);
     return *this = *this / y;
+}
+
+bool operator==(ModInt x, ModInt y)
+{
+    return x.val == y.val && x.mod == y.mod;
+}
+
+bool operator<(ModInt x, ModInt y)
+{
+    return x.val == y.val ? x.mod < y.mod : x.val < y.val;
 }
 
 ModInt ModInt::pow(unsigned long long y) const

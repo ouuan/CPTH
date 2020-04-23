@@ -83,6 +83,12 @@ Get a number `k` such that `k` * `y` ≡ `x` (mod modulo).
 
 In `ModInt operator/(ModInt x, ModInt y)`, `x` and `y` should have the same modulo.
 
+#### Compare
+
+`ModInt operator==(ModInt x, ModInt y)`: Return true iff x and y have the same value and the same modulo.
+
+`ModInt operator<(ModInt x, ModInt y)`: Return true iff x has a smaller value than y or x and y have the same value and x has a smaller modulo than y.
+
 #### Power
 
 `ModInt pow(ModInt x, unsigned long long y)`: Get `x` to the power of `y`.

@@ -57,6 +57,11 @@ class ConstantModInt
     ConstantModInt &operator/=(ConstantModInt y);
     ConstantModInt &operator/=(long long y);
 
+    template <int M>
+    friend bool operator==(ConstantModInt<M> x, ConstantModInt<M> y);
+    template <int M>
+    friend bool operator<(ConstantModInt<M> x, ConstantModInt<M> y);
+
     ConstantModInt pow(unsigned long long y) const;
     template <int M>
     friend ConstantModInt<M> pow(ConstantModInt<M> x, unsigned long long y);
@@ -214,6 +219,17 @@ ConstantModInt<mod> &ConstantModInt<mod>::operator/=(long long y)
 {
     assert(y % mod != 0);
     return *this = *this / y;
+}
+
+template <int mod>
+bool operator==(ConstantModInt<mod> x, ConstantModInt<mod> y)
+{
+    return x.val == y.val;
+}
+template <int mod>
+bool operator<(ConstantModInt<mod> x, ConstantModInt<mod> y)
+{
+    return x.val < y.val;
 }
 
 template <int mod>

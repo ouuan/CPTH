@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include <iostream>
+#include <set>
 
 using CPTH::ModInt;
 
@@ -22,13 +23,21 @@ int main()
         switch (op)
         {
             case 1:
+            {
+                std::set<ModInt> s;
+                ModInt ans(m, (x.toInt() + a) % m);
+                s.insert(ans);
                 if (n % 3 == 0)
                     x += a;
                 else if (n % 3 == 1)
                     x += ModInt(m, a);
                 else
                     x = a + x;
+                s.insert(x);
+                assert(x == ans);
+                assert(s.size() == 1);
                 break;
+            }
             case 2:
                 if (n & 1)
                     x -= a;

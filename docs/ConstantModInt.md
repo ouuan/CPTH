@@ -8,4 +8,4 @@ It's similar to [ModInt](ModInt.md), but the modulo is a template parameter in `
 
 ### Functions
 
-Please read the source file and [the document of ModInt](ModInt.md) for more information.
+Please read the [source file](../headers/ConstantModInt.h) and [the document of ModInt](ModInt.md) for more information.
