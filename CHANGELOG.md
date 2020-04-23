@@ -1,5 +1,11 @@
 ## UNRELEASED
 
+## 0.4.1
+
+## Fixed
+
+- Fixed `ModInt::operator~` and `ConstantModInt<mod>::operator~` when the modulo number is not prime.
+
 ## 0.4.0
 
 ## Added
