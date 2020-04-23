@@ -67,8 +67,7 @@ class ConstantModInt
     friend ConstantModInt<M> pow(ConstantModInt<M> x, unsigned long long y);
 
    private:
-    int modadd(int x, int y) const;
-
+    static int modadd(int x, int y);
     static int gcd(int x, int y);
 
     int val;
@@ -253,7 +252,7 @@ ConstantModInt<mod> pow(ConstantModInt<mod> x, unsigned long long y)
 }
 
 template <int mod>
-int ConstantModInt<mod>::modadd(int x, int y) const
+int ConstantModInt<mod>::modadd(int x, int y)
 {
     return (x += y) >= mod ? x - mod : x;
 }
