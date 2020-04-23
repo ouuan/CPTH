@@ -15,8 +15,8 @@ int randint(int l, int r)
 
 int main()
 {
-    int n = randint(100, 10000);
-    int k = randint(20, n / 2);
+    int n = randint(1000, 10000);
+    int k = randint(50, n / 2);
 
     printf("%d %d\n", n, k);
 
