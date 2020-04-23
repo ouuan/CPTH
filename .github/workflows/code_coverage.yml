@@ -25,9 +25,9 @@ jobs:
           echo "Compiling $test.cpp..."
           g++ "$test.cpp" -o "$test" -Wall -Wshadow -Wextra -Werror --coverage -std=c++11 -I "../headers"
           echo "Compiling ${test}_gen.cpp..."
-          g++ "${test}_gen.cpp" -o "${test}_gen" -std=c++11 -I ../third_party/Tree-Generator
+          g++ "${test}_gen.cpp" -o "${test}_gen" -Wall -Wshadow -Wextra -Werror -std=c++11 -I ../third_party/Tree-Generator
           echo "Compiling ${test}_bf.cpp..."
-          g++ "${test}_bf.cpp" -o "${test}_bf" -std=c++11
+          g++ "${test}_bf.cpp" -o "${test}_bf" -Wall -Wshadow -Wextra -Werror -std=c++11
           echo "Compiling ${test}_check.cpp..."
           g++ "${test}_check.cpp" -o "${test}_check" -std=c++11 -I ../third_party/testlib
           echo "Running ${test}_gen..."
@@ -45,3 +45,10 @@ jobs:
 
     - name: Upload coverage to Codecov
       run: bash <(curl -s https://codecov.io/bash)
+
+    - name: "Upload failed tests directory"
+      uses: actions/upload-artifact@v1
+      if: failure()
+      with:
+        name: failed-tests-directory-${{ github.sha }}
+        path: tests
