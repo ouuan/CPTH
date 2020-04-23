@@ -1,5 +1,11 @@
 ## UNRELEASED
 
+## 0.4.0
+
+## Added
+
+- `operator==` and `operator<` for ModInt and ConstantModInt.
+
 ## 0.3.0
 
 ## Added
