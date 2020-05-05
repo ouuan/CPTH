@@ -29,7 +29,28 @@ int main()
         hld.addEdge(u, v);
     }
 
-    hld.build(r);
+    for (int i = 1; i <= 10000000; ++i)
+        hld.build(r);
+
+    int cnt = 0;
+
+    function<void(int)> dfs = [&](int u) {
+        if (u == (int)hld.bottom(u))
+        {
+            ++cnt;
+            for (int x = u; x != (int)hld.top(x); x = hld.parent(x))
+            {
+                ++cnt;
+            }
+        }
+        for (auto v : hld.children(u))
+        {
+            dfs(v);
+        }
+    };
+
+    dfs(r);
+    assert(cnt == n);
 
     vector<int> init(n);
     for (int i = 1; i <= n; ++i)
@@ -55,8 +76,12 @@ int main()
             {
                 int y, z;
                 cin >> y >> z;
-                for (auto s : hld.path(x, y))
+                int l = hld.lca(x, y);
+                for (auto s : hld.path(x, l))
                     seg.modify(s.first, s.second + 1, z % p);
+                for (auto s : hld.path(y, l))
+                    seg.modify(s.first, s.second + 1, z % p);
+                seg.modify(hld.id(l), (p - z % p) % p);
                 break;
             }
             case 2:
