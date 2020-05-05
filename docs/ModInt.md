@@ -4,7 +4,7 @@ Integer modulo a number.
 
 ### Public Member Functions
 
-`ModInt(int modulo, long long value = 0)`: Construct a ModInt with `modulo` as the modulo and `value` as the value. `modulo` should be in the range `[1, INT_MAX / 2]`.
+`ModInt(int modulo = 1, long long value = 0)`: Construct a ModInt with `modulo` as the modulo and `value` as the value. `modulo` should be in the range `[1, INT_MAX / 2]`.
 
 `int toInt() const`: Get the value of the ModInt.
 

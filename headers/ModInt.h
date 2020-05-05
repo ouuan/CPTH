@@ -10,7 +10,7 @@ namespace CPTH
 class ModInt
 {
    public:
-    explicit ModInt(int modulo, long long value = 0);
+    explicit ModInt(int modulo = 1, long long value = 0);
 
     int toInt() const;
     int modulo() const;
