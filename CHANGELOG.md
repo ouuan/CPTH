@@ -1,5 +1,12 @@
 ## UNRELEASED
 
+## 0.5.0
+
+### Added
+
+- HLD
+- Default constructor of ModInt
+
 ## 0.4.1
 
 ### Fixed
