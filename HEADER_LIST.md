@@ -45,3 +45,11 @@ A faster ModInt with a compile-time constant modulo as a template parameter.
 - [ConstantModInt.h](headers/ConstantModInt.h)
 - [ConstantModInt.md](docs/ConstantModInt.md)
 - [ConstantModInt.cpp](tests/ConstantModInt.cpp)
+
+## HLD
+
+The heavy-light decomposition of a tree. Can be used to perform operations on paths.
+
+- [HLD.h](headers/HLD.h)
+- [HLD.md](docs/HLD.md)
+- [HLD.cpp](tests/HLD.cpp)
