@@ -4,7 +4,7 @@ A segment tree template, supports lazy propagation (range modify, range query), 
 
 - [SegmentTree.h](headers/SegmentTree.h)
 - [SegmentTree.md](docs/SegmentTree.md)
-- [SegmentTree.cpp](tests/SegmentTree.cpp)
+- [SegmentTree.cpp](tests/SegmentTree/SegmentTree.cpp)
 
 ## SAM
 
@@ -12,7 +12,7 @@ A suffix automaton template which supports arbitary character type, can construc
 
 - [SAM.h](headers/SAM.h)
 - [SAM.md](docs/SAM.md)
-- [SAM.cpp](tests/SAM.cpp)
+- [SAM.cpp](tests/SAM/SAM.cpp)
 
 ## BIT
 
@@ -20,7 +20,7 @@ A binary indexed tree (Fenwick tree) template which supports element addition, q
 
 - [BIT.h](headers/BIT.h)
 - [BIT.md](docs/BIT.md)
-- [BIT.cpp](tests/BIT.cpp)
+- [BIT.cpp](tests/BIT/BIT.cpp)
 
 ## MonotonousQueue
 
@@ -28,7 +28,7 @@ Get the maximum value in a FIFO queue  in linear time.
 
 - [MonotonousQueue.h](headers/MonotonousQueue.h)
 - [MonotonousQueue.md](docs/MonotonousQueue.md)
-- [MonotonousQueue.cpp](tests/MonotonousQueue.cpp)
+- [MonotonousQueue.cpp](tests/MonotonousQueue/MonotonousQueue.cpp)
 
 ## ModInt
 
@@ -36,7 +36,7 @@ Integer modulo an number.
 
 - [ModInt.h](headers/ModInt.h)
 - [ModInt.md](docs/ModInt.md)
-- [ModInt.cpp](tests/ModInt.cpp)
+- [ModInt.cpp](tests/ModInt/ModInt.cpp)
 
 ## ConstantModInt
 
@@ -44,7 +44,7 @@ A faster ModInt with a compile-time constant modulo as a template parameter.
 
 - [ConstantModInt.h](headers/ConstantModInt.h)
 - [ConstantModInt.md](docs/ConstantModInt.md)
-- [ConstantModInt.cpp](tests/ConstantModInt.cpp)
+- [ConstantModInt.cpp](tests/ConstantModInt/ConstantModInt.cpp)
 
 ## HLD
 
@@ -52,4 +52,4 @@ The heavy-light decomposition of a tree. Can be used to perform operations on pa
 
 - [HLD.h](headers/HLD.h)
 - [HLD.md](docs/HLD.md)
-- [HLD.cpp](tests/HLD.cpp)
+- [HLD.cpp](tests/HLD/HLD.cpp)

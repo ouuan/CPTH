@@ -7,12 +7,12 @@ jobs:
     name: "Check Clang Format"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: "Install clang-format-9"
-      run: |
-        sudo apt-get update
-        sudo apt-get install clang-format-9
-    - name: "Format Codes"
-      run: clang-format-9 -i headers/*.h tests/*.cpp
-    - name: Check diff
-      run: git diff --exit-code HEAD
+      - uses: actions/checkout@v2
+      - name: "Install clang-format-9"
+        run: |
+          sudo apt-get update
+          sudo apt-get install clang-format-9
+      - name: "Format Codes"
+        run: clang-format-9 -i headers/*.h tests/*/*.cpp
+      - name: Check diff
+        run: git diff --exit-code HEAD

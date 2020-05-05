@@ -7,7 +7,7 @@ fi
 
 set -e
 
-touch "headers/$1.h" "docs/$1.md" "tests/$1.md" "tests/$1.cpp" "tests/$1_bf.cpp" "tests/$1_gen.cpp" "tests/$1_check.cpp"
+touch "headers/$1.h" "docs/$1.md" "tests/$1/$1.md" "tests/$1/$1.cpp" "tests/$1/$1_bf.cpp" "tests/$1/$1_gen.cpp" "tests/$1/$1_check.cpp"
 
 headerdefine=CPTH_${1^^}
 
@@ -39,7 +39,7 @@ int main()
 
 
     return 0;
-}" > "tests/$1.cpp"
+}" > "tests/$1/$1.cpp"
 
 echo '#include <iostream>
 #include <cstdio>
@@ -49,7 +49,7 @@ int main()
 
 
     return 0;
-}' > "tests/$1_bf.cpp"
+}' > "tests/$1/$1_bf.cpp"
 
 echo '#include <chrono>
 #include <cstdio>
@@ -68,9 +68,9 @@ int main()
 
 
     return 0;
-}' > "tests/$1_gen.cpp"
+}' > "tests/$1/$1_gen.cpp"
 
-echo '#include "checkers/"' > "tests/$1_check.cpp"
+echo '#include "checkers/"' > "tests/$1/$1_check.cpp"
 
 echo "## $1
 
@@ -84,7 +84,7 @@ echo "## $1
 
 ### Output
 
-" > "tests/$1.md"
+" > "tests/$1/$1.md"
 
 echo "
 ## $1
@@ -93,4 +93,4 @@ echo "
 
 - [$1.h](headers/$1.h)
 - [$1.md](docs/$1.md)
-- [$1.cpp](tests/$1.cpp)" >> HEADER_LIST.md
+- [$1.cpp](tests/$1/$1.cpp)" >> HEADER_LIST.md

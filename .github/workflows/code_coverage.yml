@@ -11,44 +11,44 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: "Get submodules"
-      run: git submodule update --init --recursive
+      - name: "Get submodules"
+        run: git submodule update --init --recursive
 
-    - name: "Generate coverage report"
-      run: |
-        cd tests
-        for i in *_gen.cpp; do
-          test=${i%_gen.cpp}
-          echo "Running the test $test..."
-          echo "Compiling $test.cpp..."
-          g++ "$test.cpp" -o "$test" -Wall -Wshadow -Wextra -Werror --coverage -std=c++11 -I "../headers"
-          echo "Compiling ${test}_gen.cpp..."
-          g++ "${test}_gen.cpp" -o "${test}_gen" -Wall -Wshadow -Wextra -Werror -std=c++11 -I ../third_party/Tree-Generator
-          echo "Compiling ${test}_bf.cpp..."
-          g++ "${test}_bf.cpp" -o "${test}_bf" -Wall -Wshadow -Wextra -Werror -std=c++11
-          echo "Compiling ${test}_check.cpp..."
-          g++ "${test}_check.cpp" -o "${test}_check" -std=c++11 -I ../third_party/testlib
-          echo "Running ${test}_gen..."
-          "./${test}_gen" > "$test.in"
-          echo "Running ${test}..."
-          "./$test" < "$test.in" > "$test.out"
-          echo "Running ${test}_bf..."
-          "./${test}_bf" < "$test.in" > "${test}_bf.out"
-          echo "Running ${test}_check..."
-          "./${test}_check" "$test.in" "$test.out" "${test}_bf.out"
-          echo "Generating coverage report..."
-          gcov -n -o . "$test.cpp" > /dev/null
-          echo "The test $test has passed."
-        done
+      - name: "Generate coverage report"
+        run: |
+          for i in tests/*/; do
+            x=${i#tests/}
+            test=${x%/}
+            echo "Running the test $test..."
+            echo "Compiling $test.cpp..."
+            g++ "tests/$test/$test.cpp" -o "$test" -Wall -Wshadow -Wextra -Werror --coverage -std=c++11 -I "headers"
+            echo "Compiling ${test}_gen.cpp..."
+            g++ "tests/$test/${test}_gen.cpp" -o "${test}_gen" -Wall -Wshadow -Wextra -Werror -std=c++11 -I "third_party/Tree-Generator"
+            echo "Compiling ${test}_bf.cpp..."
+            g++ "tests/$test/${test}_bf.cpp" -o "${test}_bf" -Wall -Wshadow -Wextra -Werror -std=c++11
+            echo "Compiling ${test}_check.cpp..."
+            g++ "tests/$test/${test}_check.cpp" -o "${test}_check" -std=c++11 -I "third_party/testlib"
+            echo "Running ${test}_gen..."
+            "./${test}_gen" > "$test.in"
+            echo "Running ${test}..."
+            "./$test" < "$test.in" > "$test.out"
+            echo "Running ${test}_bf..."
+            "./${test}_bf" < "$test.in" > "${test}_bf.out"
+            echo "Running ${test}_check..."
+            "./${test}_check" "$test.in" "$test.out" "${test}_bf.out"
+            echo "Generating coverage report..."
+            gcov -n -o . "$test.cpp" > /dev/null
+            echo "The test $test has passed."
+          done
 
-    - name: Upload coverage to Codecov
-      run: bash <(curl -s https://codecov.io/bash)
+      - name: Upload coverage to Codecov
+        run: bash <(curl -s https://codecov.io/bash)
 
-    - name: "Upload failed tests directory"
-      uses: actions/upload-artifact@v1
-      if: failure()
-      with:
-        name: failed-tests-directory-${{ github.sha }}
-        path: tests
+      - name: "Upload failed tests directory"
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: failed-tests-directory-${{ github.sha }}
+          path: tests

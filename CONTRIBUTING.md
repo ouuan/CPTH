@@ -24,11 +24,11 @@ A header consists of the following:
 2. A document which describes how to use the header, including the description for each function, at `docs/headerName.md`.
 3. A short introduction of this header and links to the header, the document and one of its tests at [HEADER_LIST.md](HEADER_LIST.md).
 4. At least one test, which consists of:
-   - `tests/testName.md`, describe the problem.
-   - `tests/testName.cpp`, use CPTH to solve the problem.
-   - `tests/testName_bf.cpp`, use brute force to solve the problem.
-   - `tests/testName_gen.cpp`, generate a testcase for the problem.
-   - `tests/testName_check.cpp`, use [testlib](https://github.com/MikeMirzayanov/testlib) to check if the answer is correct.
+   - `tests/testName/testName.md`, describe the problem.
+   - `tests/testName/testName.cpp`, use CPTH to solve the problem.
+   - `tests/testName/testName_bf.cpp`, use brute force to solve the problem.
+   - `tests/testName/testName_gen.cpp`, generate a testcase for the problem.
+   - `tests/testName/testName_check.cpp`, use [testlib](https://github.com/MikeMirzayanov/testlib) to check if the answer is correct.
 
 You can use [create_header.sh](tools/create_header.sh) to generate the above files.
 
