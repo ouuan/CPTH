@@ -43,6 +43,6 @@ Open a pull request, wait for review, apply the suggestions, then your changes w
 It's better to follow these rules:
 
 1. Use Clang Format 9 and [.clang-format](.clang-format) to format your codes.
-2. Silent all warnings in your codes.
-3. Follow [this blog](https://chris.beams.io/posts/git-commit/) and [commitizen](https://github.com/commitizen/cz-cli) when writing commit messages.
+2. Silence all warnings in your codes.
+3. Try to follow [this blog](https://chris.beams.io/posts/git-commit/) and [Conventional Commits](https://www.conventionalcommits.org/) when writing commit messages.
 4. Obey the [Code of Conduct](CODE_OF_CONDUCT.md).
