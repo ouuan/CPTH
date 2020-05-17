@@ -7,6 +7,7 @@ fi
 
 set -e
 
+mkdir -p "tests/$1"
 touch "headers/$1.h" "docs/$1.md" "tests/$1/$1.md" "tests/$1/$1.cpp" "tests/$1/$1_bf.cpp" "tests/$1/$1_gen.cpp" "tests/$1/$1_check.cpp"
 
 headerdefine=CPTH_${1^^}
