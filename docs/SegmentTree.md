@@ -49,7 +49,7 @@ template <typename valueType, typename modType>
 struct SegmentTreeNode
 {
    public:
-    std::size_t id;
+    size_t id;
     long long left, right;
     valueType val;
     modType mod;

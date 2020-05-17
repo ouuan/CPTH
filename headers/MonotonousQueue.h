@@ -33,7 +33,7 @@ class MonotonousQueue
     void removeInvalidElements();
 
     std::vector<T> a;
-    std::size_t head = 0;
+    size_t head = 0;
     std::function<bool(const T &)> m_validate;
 };
 

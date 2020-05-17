@@ -16,21 +16,20 @@ class BIT
    public:
     BIT();
 
-    BIT(std::size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T());
+    BIT(size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T());
 
-    void init(std::size_t _size, std::function<T(const T &, const T &)> _merge,
-              const T &_zero = T());
+    void init(size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T());
 
-    void add(std::size_t p, const T &x);
+    void add(size_t p, const T &x);
 
-    T query(std::size_t p) const;
+    T query(size_t p) const;
 
-    std::size_t size() const;
+    size_t size() const;
 
     void clear();
 
    private:
-    static std::size_t lowbit(std::size_t x);
+    static size_t lowbit(size_t x);
 
     T zero;
     std::vector<T> a;
@@ -43,13 +42,13 @@ template <typename T>
 BIT<T>::BIT() : a(1){};
 
 template <typename T>
-BIT<T>::BIT(std::size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero)
+BIT<T>::BIT(size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero)
 {
     init(_size, _merge, _zero);
 }
 
 template <typename T>
-void BIT<T>::init(std::size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero)
+void BIT<T>::init(size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero)
 {
     assert(_size < vis.max_size());
     assert(_size < a.max_size());
@@ -61,7 +60,7 @@ void BIT<T>::init(std::size_t _size, std::function<T(const T &, const T &)> _mer
 }
 
 template <typename T>
-void BIT<T>::add(std::size_t p, const T &x)
+void BIT<T>::add(size_t p, const T &x)
 {
     assert(p);
     for (; p <= size(); p += lowbit(p))
@@ -77,7 +76,7 @@ void BIT<T>::add(std::size_t p, const T &x)
 }
 
 template <typename T>
-T BIT<T>::query(std::size_t p) const
+T BIT<T>::query(size_t p) const
 {
     assert(p <= size());
     T out = zero;
@@ -90,7 +89,7 @@ T BIT<T>::query(std::size_t p) const
 }
 
 template <typename T>
-std::size_t BIT<T>::size() const
+size_t BIT<T>::size() const
 {
     assert(a.size());
     return a.size() - 1;
@@ -104,9 +103,9 @@ void BIT<T>::clear()
 }
 
 template <typename T>
-std::size_t BIT<T>::lowbit(std::size_t x)
+size_t BIT<T>::lowbit(size_t x)
 {
-    return std::size_t(1) << __builtin_ctzll(x);
+    return size_t(1) << __builtin_ctzll(x);
 }
 
 }  // namespace CPTH

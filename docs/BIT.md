@@ -12,14 +12,14 @@ The range is started from 1, so the range is [1, size].
 
 `BIT()`: Construct an empty BIT.
 
-`BIT(std::size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T())`: Construct a BIT with the size of `size`, the function `_merge` is used for adding up two values, and the result of `_merge(_zero, x)` where `x` is an element of `T` is always `x`.
+`BIT(size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T())`: Construct a BIT with the size of `size`, the function `_merge` is used for adding up two values, and the result of `_merge(_zero, x)` where `x` is an element of `T` is always `x`.
 
-`void init(std::size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T())`: The same as the above constructor.
+`void init(size_t _size, std::function<T(const T &, const T &)> _merge, const T &_zero = T())`: The same as the above constructor.
 
-`void add(std::size_t p, const T &x)`: Add `x` to the element `p`.
+`void add(size_t p, const T &x)`: Add `x` to the element `p`.
 
-`T query(std::size_t p) const`: Get the sum of [1, p].
+`T query(size_t p) const`: Get the sum of [1, p].
 
-`std::size_t size() const`: Get the size of the BIT.
+`size_t size() const`: Get the size of the BIT.
 
 `void clear()`: Clear the BIT in O(1).

@@ -13,7 +13,7 @@ namespace CPTH
 template <typename valueType, typename modType>
 struct SegmentTreeNode
 {
-    std::size_t id;
+    size_t id;
     long long left, right;
     valueType val;
     modType mod;
@@ -46,21 +46,20 @@ class SegmentTree
     valueType query(long long p);
 
    private:
-    void pushup(std::size_t cur);
+    void pushup(size_t cur);
 
-    void pushdown(std::size_t cur);
+    void pushdown(size_t cur);
 
-    void build(std::size_t cur, long long l, long long r, const std::vector<valueType> &initValue);
+    void build(size_t cur, long long l, long long r, const std::vector<valueType> &initValue);
 
     void m_init(const std::vector<valueType> &_initValue,
                 std::function<valueType(const valueType &, const valueType &)> _merge,
                 std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> _update,
                 const valueType &_valueZero, const modType &_modZero);
 
-    void modify(std::size_t cur, long long l, long long r, long long L, long long R,
-                const modType &mod);
+    void modify(size_t cur, long long l, long long r, long long L, long long R, const modType &mod);
 
-    valueType query(std::size_t cur, long long l, long long r, long long L, long long R);
+    valueType query(size_t cur, long long l, long long r, long long L, long long R);
 
     std::function<valueType(const valueType &, const valueType &)> merge;
     std::function<void(SegmentTreeNode<valueType, modType> &, const modType &)> update;
@@ -123,13 +122,13 @@ valueType SegmentTree<valueType, modType, elementModificationOnly>::query(long l
 }
 
 template <typename valueType, typename modType, bool elementModificationOnly>
-void SegmentTree<valueType, modType, elementModificationOnly>::pushup(std::size_t cur)
+void SegmentTree<valueType, modType, elementModificationOnly>::pushup(size_t cur)
 {
     nodes[cur].val = merge(nodes[cur << 1].val, nodes[cur << 1 | 1].val);
 }
 
 template <typename valueType, typename modType, bool elementModificationOnly>
-void SegmentTree<valueType, modType, elementModificationOnly>::pushdown(std::size_t cur)
+void SegmentTree<valueType, modType, elementModificationOnly>::pushdown(size_t cur)
 {
     update(nodes[cur << 1], nodes[cur].mod);
     update(nodes[cur << 1 | 1], nodes[cur].mod);
@@ -138,7 +137,7 @@ void SegmentTree<valueType, modType, elementModificationOnly>::pushdown(std::siz
 
 template <typename valueType, typename modType, bool elementModificationOnly>
 void SegmentTree<valueType, modType, elementModificationOnly>::build(
-    std::size_t cur, long long l, long long r, const std::vector<valueType> &initValue)
+    size_t cur, long long l, long long r, const std::vector<valueType> &initValue)
 {
     nodes[cur].id = cur;
     nodes[cur].left = l;
@@ -170,7 +169,7 @@ void SegmentTree<valueType, modType, elementModificationOnly>::m_init(
 }
 
 template <typename valueType, typename modType, bool elementModificationOnly>
-void SegmentTree<valueType, modType, elementModificationOnly>::modify(std::size_t cur, long long l,
+void SegmentTree<valueType, modType, elementModificationOnly>::modify(size_t cur, long long l,
                                                                       long long r, long long L,
                                                                       long long R,
                                                                       const modType &mod)
@@ -190,9 +189,9 @@ void SegmentTree<valueType, modType, elementModificationOnly>::modify(std::size_
 }
 
 template <typename valueType, typename modType, bool elementModificationOnly>
-valueType SegmentTree<valueType, modType, elementModificationOnly>::query(std::size_t cur,
-                                                                          long long l, long long r,
-                                                                          long long L, long long R)
+valueType SegmentTree<valueType, modType, elementModificationOnly>::query(size_t cur, long long l,
+                                                                          long long r, long long L,
+                                                                          long long R)
 {
     if (l >= R || r <= L)
         return valueZero;

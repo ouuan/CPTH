@@ -12,52 +12,52 @@ namespace CPTH
 class HLD
 {
    public:
-    HLD(std::size_t size = 0);
+    HLD(size_t size = 0);
 
-    void reset(std::size_t size);
+    void reset(size_t size);
 
-    void addEdge(std::size_t u, std::size_t v);
+    void addEdge(size_t u, size_t v);
 
-    void build(std::size_t root = 1);
+    void build(size_t root = 1);
 
-    std::size_t lca(std::size_t u, std::size_t v) const;
+    size_t lca(size_t u, size_t v) const;
 
-    std::size_t id(std::size_t u) const;
+    size_t id(size_t u) const;
 
-    std::size_t atId(std::size_t x) const;
+    size_t atId(size_t x) const;
 
-    std::size_t top(std::size_t u) const;
+    size_t top(size_t u) const;
 
-    std::size_t bottom(std::size_t u) const;
+    size_t bottom(size_t u) const;
 
-    std::size_t parent(std::size_t u) const;
+    size_t parent(size_t u) const;
 
-    std::vector<std::size_t> children(std::size_t u) const;
+    std::vector<size_t> children(size_t u) const;
 
-    std::pair<std::size_t, std::size_t> subtree(std::size_t u) const;
+    std::pair<size_t, size_t> subtree(size_t u) const;
 
-    std::vector<std::pair<std::size_t, std::size_t>> path(std::size_t u, std::size_t v) const;
+    std::vector<std::pair<size_t, size_t>> path(size_t u, size_t v) const;
 
    private:
-    void dfs1(std::size_t u);
+    void dfs1(size_t u);
 
-    void dfs2(std::size_t u);
+    void dfs2(size_t u);
 
-    void validate(std::size_t u) const;
+    void validate(size_t u) const;
 
    private:
     bool built;
-    std::size_t n, dfntot;
-    std::vector<std::vector<std::size_t>> g;
-    std::vector<std::size_t> pa, heavy, dep, siz, tp, bt, dfn, rdfn, exi;
+    size_t n, dfntot;
+    std::vector<std::vector<size_t>> g;
+    std::vector<size_t> pa, heavy, dep, siz, tp, bt, dfn, rdfn, exi;
 };
 
-HLD::HLD(std::size_t size)
+HLD::HLD(size_t size)
 {
     reset(size);
 }
 
-void HLD::reset(std::size_t size)
+void HLD::reset(size_t size)
 {
     assert(size < g.max_size());
     assert(size < pa.max_size());
@@ -70,7 +70,7 @@ void HLD::reset(std::size_t size)
     heavy = dep = siz = tp = bt = dfn = rdfn = exi = pa;
 }
 
-void HLD::addEdge(std::size_t u, std::size_t v)
+void HLD::addEdge(size_t u, size_t v)
 {
     validate(u);
     validate(v);
@@ -78,7 +78,7 @@ void HLD::addEdge(std::size_t u, std::size_t v)
     g[v].push_back(u);
 }
 
-void HLD::build(std::size_t root)
+void HLD::build(size_t root)
 {
     if (built)
         return;
@@ -91,7 +91,7 @@ void HLD::build(std::size_t root)
     built = true;
 }
 
-std::size_t HLD::lca(std::size_t u, std::size_t v) const
+size_t HLD::lca(size_t u, size_t v) const
 {
     assert(built);
     validate(u);
@@ -106,42 +106,42 @@ std::size_t HLD::lca(std::size_t u, std::size_t v) const
     return dep[u] < dep[v] ? u : v;
 }
 
-std::size_t HLD::id(std::size_t u) const
+size_t HLD::id(size_t u) const
 {
     assert(built);
     validate(u);
     return dfn[u];
 }
 
-std::size_t HLD::atId(std::size_t x) const
+size_t HLD::atId(size_t x) const
 {
     assert(built);
     validate(x);
     return rdfn[x];
 }
 
-std::size_t HLD::top(std::size_t u) const
+size_t HLD::top(size_t u) const
 {
     assert(built);
     validate(u);
     return tp[u];
 }
 
-std::size_t HLD::bottom(std::size_t u) const
+size_t HLD::bottom(size_t u) const
 {
     assert(built);
     validate(u);
     return bt[tp[u]];
 }
 
-std::size_t HLD::parent(std::size_t u) const
+size_t HLD::parent(size_t u) const
 {
     assert(built);
     validate(u);
     return pa[u];
 }
 
-std::vector<std::size_t> HLD::children(std::size_t u) const
+std::vector<size_t> HLD::children(size_t u) const
 {
     auto ret = g[u];
     if (pa[u])
@@ -149,19 +149,19 @@ std::vector<std::size_t> HLD::children(std::size_t u) const
     return ret;
 }
 
-std::pair<std::size_t, std::size_t> HLD::subtree(std::size_t u) const
+std::pair<size_t, size_t> HLD::subtree(size_t u) const
 {
     assert(built);
     validate(u);
     return {dfn[u], exi[u]};
 }
 
-std::vector<std::pair<std::size_t, std::size_t>> HLD::path(std::size_t u, std::size_t v) const
+std::vector<std::pair<size_t, size_t>> HLD::path(size_t u, size_t v) const
 {
     assert(built);
     validate(u);
     validate(v);
-    std::vector<std::pair<std::size_t, std::size_t>> res;
+    std::vector<std::pair<size_t, size_t>> res;
     while (tp[u] != tp[v])
     {
         if (dep[tp[u]] > dep[tp[v]])
@@ -181,7 +181,7 @@ std::vector<std::pair<std::size_t, std::size_t>> HLD::path(std::size_t u, std::s
     return res;
 }
 
-void HLD::dfs1(std::size_t u)
+void HLD::dfs1(size_t u)
 {
     assert(siz[u] == 0);
     siz[u] = 1;
@@ -198,7 +198,7 @@ void HLD::dfs1(std::size_t u)
     }
 }
 
-void HLD::dfs2(std::size_t u)
+void HLD::dfs2(size_t u)
 {
     bt[tp[u]] = u;
     dfn[u] = ++dfntot;
@@ -218,7 +218,7 @@ void HLD::dfs2(std::size_t u)
     exi[u] = dfntot;
 }
 
-void HLD::validate(std::size_t u) const
+void HLD::validate(size_t u) const
 {
     assert(u >= 1);
     assert(u <= n);

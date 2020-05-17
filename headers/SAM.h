@@ -16,11 +16,11 @@ class SAM
    public:
     struct SAMNode
     {
-        std::size_t pa, len;
-        std::map<charType, std::size_t> ch;
+        size_t pa, len;
+        std::map<charType, size_t> ch;
         SAMNode() : pa(std::vector<SAMNode>().max_size()), len(0)
         {}
-        std::size_t &operator[](std::size_t x)
+        size_t &operator[](size_t x)
         {
             return ch[x];
         }
@@ -33,7 +33,7 @@ class SAM
     template <typename T>
     explicit SAM(const T &str);
 
-    std::size_t append(const charType &x);
+    size_t append(const charType &x);
 
     template <typename T>
     void append(const T &str);
@@ -42,16 +42,16 @@ class SAM
 
     void buildTree();
 
-    std::size_t size() const;
+    size_t size() const;
 
-    const SAMNode &operator[](std::size_t x) const;
+    const SAMNode &operator[](size_t x) const;
 
-    const std::vector<std::size_t> &children(std::size_t x) const;
+    const std::vector<size_t> &children(size_t x) const;
 
    private:
     std::vector<SAMNode> t;
-    std::vector<std::vector<std::size_t>> g;
-    std::size_t p;
+    std::vector<std::vector<size_t>> g;
+    size_t p;
 };
 
 template <typename charType>
@@ -74,9 +74,9 @@ SAM<charType>::SAM(const T &str) : SAM()
 }
 
 template <typename charType>
-std::size_t SAM<charType>::append(const charType &x)
+size_t SAM<charType>::append(const charType &x)
 {
-    std::size_t np = t.size();
+    size_t np = t.size();
     t.emplace_back();
     t[np].len = t[p].len + 1;
     while (p != t.max_size() && !t[p].ch.count(x))
@@ -88,12 +88,12 @@ std::size_t SAM<charType>::append(const charType &x)
         t[np].pa = 0;
     else
     {
-        std::size_t q = t[p][x];
+        size_t q = t[p][x];
         if (t[q].len == t[p].len + 1)
             t[np].pa = q;
         else
         {
-            std::size_t nq = t.size();
+            size_t nq = t.size();
             t.push_back(t[q]);
             t[nq].len = t[p].len + 1;
             t[q].pa = t[np].pa = nq;
@@ -127,26 +127,26 @@ void SAM<charType>::clear()
 template <typename charType>
 void SAM<charType>::buildTree()
 {
-    g.assign(t.size(), std::vector<std::size_t>());
-    for (std::size_t i = 1; i < t.size(); ++i)
+    g.assign(t.size(), std::vector<size_t>());
+    for (size_t i = 1; i < t.size(); ++i)
         g[t[i].pa].push_back(i);
 }
 
 template <typename charType>
-std::size_t SAM<charType>::size() const
+size_t SAM<charType>::size() const
 {
     return t.size();
 }
 
 template <typename charType>
-const typename SAM<charType>::SAMNode &SAM<charType>::operator[](std::size_t x) const
+const typename SAM<charType>::SAMNode &SAM<charType>::operator[](size_t x) const
 {
     assert(x < t.size());
     return t[x];
 }
 
 template <typename charType>
-const std::vector<std::size_t> &SAM<charType>::children(std::size_t x) const
+const std::vector<size_t> &SAM<charType>::children(size_t x) const
 {
     assert(x < g.size());
     return g[x];
