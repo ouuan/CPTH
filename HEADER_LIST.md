@@ -53,3 +53,11 @@ The heavy-light decomposition of a tree. Can be used to perform operations on pa
 - [HLD.h](headers/HLD.h)
 - [HLD.md](docs/HLD.md)
 - [HLD.cpp](tests/HLD/HLD.cpp)
+
+## SparseTable
+
+Sparse table can be used to get the "sum" of an interval in O(nlogn)-O(1), where the "sum" behaves like a function of a (non-multi) set. For example, min and gcd.
+
+- [SparseTable.h](headers/SparseTable.h)
+- [SparseTable.md](docs/SparseTable.md)
+- [SparseTable.cpp](tests/SparseTable/SparseTable.cpp)
