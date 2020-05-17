@@ -1,5 +1,15 @@
 ## UNRELEASED
 
+## 0.6.0
+
+### Added
+
+- SparseTable
+
+### Changed
+
+- Use `size_t` instead of `std::size_t`.
+
 ## 0.5.0
 
 ### Added
