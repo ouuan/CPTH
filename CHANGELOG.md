@@ -1,5 +1,7 @@
 ## UNRELEASED
 
+## 0.7.0
+
 ### Added
 
 - `size_t HLD::size(size_t u) const`
@@ -9,6 +11,10 @@
 ### Changed
 
 - `void HLD::reset(size_t size)` -> `void HLD::init(size_t size)`
+
+### Fixed
+
+- Now when `HLD::build(size_t root)` is called, it will be rebuilt if the root is changed.
 
 ## 0.6.0
 
