@@ -29,6 +29,20 @@ int main()
         hld.addEdge(u, v);
     }
 
+    hld.build(1);
+
+    for (int i = 1; i <= n; ++i)
+    {
+        auto x = hld.subtree(i);
+        assert(hld.size(i) == x.second - x.first + 1);
+        if (i == 1)
+            assert(hld.depth(i) == 0);
+        else
+            assert(hld.depth(i) == hld.depth(hld.parent(i)) + 1);
+        for (auto v : hld.children(i))
+            assert(hld.size(v) <= hld.size(hld.heavyChild(i)));
+    }
+
     for (int i = 1; i <= 10000000; ++i)
         hld.build(r);
 

@@ -1,5 +1,15 @@
 ## UNRELEASED
 
+### Added
+
+- `size_t HLD::size(size_t u) const`
+- `size_t HLD::depth(size_t u) const`
+- `size_t HLD::heavyChild(size_t u) const`
+
+### Changed
+
+- `void HLD::reset(size_t size)` -> `void HLD::init(size_t size)`
+
 ## 0.6.0
 
 ### Added

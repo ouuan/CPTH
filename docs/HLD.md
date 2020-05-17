@@ -8,7 +8,7 @@ The nodes are numbered from `1` to `n`.
 
 `HLD(size_t size = 0)`: Construct an HLD with `size` nodes.
 
-`void reset(size_t size)`: Reset the HLD to a new HLD with `size` nodes.
+`void init(size_t size)`: Reset the HLD to a new HLD with `size` nodes.
 
 `void addEdge(size_t u, size_t v)`: Add an bidirectional edge between `u` and `v`.
 
@@ -22,9 +22,15 @@ The nodes are numbered from `1` to `n`.
 
 `size_t top(size_t u) const`: Get the top node of the heavy path of `u`.
 
+`size_t size(size_t u) const`: Get the size of the subtree of `u`.
+
+`size_t depth(size_t u) const`: Get the depth of `u`. The depth of the root is `0`.
+
 `size_t bottom(size_t u) const`: Get the bottom node of the heavy path of `u`.
 
 `size_t parent(size_t u) const`: Get the parent of the node `u`.
+
+`size_t heavyChild(size_t u) const`: Get the heavy child of node `u`. If `u` is a leaf, it returns `0`.
 
 `std::vector<size_t> children(size_t u) const`: Get the children (adjacent nodes except the parent, if it's not the root) of node `u`.
 

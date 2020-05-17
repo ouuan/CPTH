@@ -14,7 +14,7 @@ class HLD
    public:
     HLD(size_t size = 0);
 
-    void reset(size_t size);
+    void init(size_t size);
 
     void addEdge(size_t u, size_t v);
 
@@ -28,9 +28,15 @@ class HLD
 
     size_t top(size_t u) const;
 
+    size_t size(size_t u) const;
+
+    size_t depth(size_t u) const;
+
     size_t bottom(size_t u) const;
 
     size_t parent(size_t u) const;
+
+    size_t heavyChild(size_t u) const;
 
     std::vector<size_t> children(size_t u) const;
 
@@ -45,6 +51,8 @@ class HLD
 
     void validate(size_t u) const;
 
+    void reset();
+
    private:
     bool built;
     size_t n, dfntot;
@@ -54,20 +62,17 @@ class HLD
 
 HLD::HLD(size_t size)
 {
-    reset(size);
+    init(size);
 }
 
-void HLD::reset(size_t size)
+void HLD::init(size_t size)
 {
     assert(size < g.max_size());
     assert(size < pa.max_size());
-    built = false;
     n = size;
-    dfntot = 0;
     g.clear();
     g.resize(n + 1);
-    pa.assign(n + 1, 0);
-    heavy = dep = siz = tp = bt = dfn = rdfn = exi = pa;
+    reset();
 }
 
 void HLD::addEdge(size_t u, size_t v)
@@ -81,7 +86,11 @@ void HLD::addEdge(size_t u, size_t v)
 void HLD::build(size_t root)
 {
     if (built)
-        return;
+    {
+        if (root == atId(1))
+            return;
+        reset();
+    }
     assert(n >= 1);
     validate(root);
     dfs1(root);
@@ -127,6 +136,20 @@ size_t HLD::top(size_t u) const
     return tp[u];
 }
 
+size_t HLD::size(size_t u) const
+{
+    assert(built);
+    validate(u);
+    return siz[u];
+}
+
+size_t HLD::depth(size_t u) const
+{
+    assert(built);
+    validate(u);
+    return dep[u];
+}
+
 size_t HLD::bottom(size_t u) const
 {
     assert(built);
@@ -139,6 +162,13 @@ size_t HLD::parent(size_t u) const
     assert(built);
     validate(u);
     return pa[u];
+}
+
+size_t HLD::heavyChild(size_t u) const
+{
+    assert(built);
+    validate(u);
+    return heavy[u];
 }
 
 std::vector<size_t> HLD::children(size_t u) const
@@ -222,6 +252,14 @@ void HLD::validate(size_t u) const
 {
     assert(u >= 1);
     assert(u <= n);
+}
+
+void HLD::reset()
+{
+    built = false;
+    dfntot = 0;
+    pa.assign(n + 1, 0);
+    heavy = dep = siz = tp = bt = dfn = rdfn = exi = pa;
 }
 }  // namespace CPTH
 
