@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+### Changed
+
+- `HLD::HLD(size_t size = 0)` => `explicit HLD::HLD(size_t size = 0)`
+
 ## 0.7.0
 
 ### Added
@@ -10,7 +14,7 @@
 
 ### Changed
 
-- `void HLD::reset(size_t size)` -> `void HLD::init(size_t size)`
+- `void HLD::reset(size_t size)` => `void HLD::init(size_t size)`
 
 ### Fixed
 

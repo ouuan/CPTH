@@ -6,7 +6,7 @@ The nodes are numbered from `1` to `n`.
 
 ### Public functions
 
-`HLD(size_t size = 0)`: Construct an HLD with `size` nodes.
+`explicit HLD(size_t size = 0)`: Construct an HLD with `size` nodes.
 
 `void init(size_t size)`: Reset the HLD to a new HLD with `size` nodes.
 

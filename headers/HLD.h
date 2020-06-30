@@ -12,7 +12,7 @@ namespace CPTH
 class HLD
 {
    public:
-    HLD(size_t size = 0);
+    explicit HLD(size_t size = 0);
 
     void init(size_t size);
 
