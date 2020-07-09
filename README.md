@@ -3,6 +3,7 @@
 [![CI Test](https://github.com/ouuan/CPTH/workflows/CI%20Test/badge.svg)](https://github.com/ouuan/CPTH/actions)
 [![codecov](https://codecov.io/gh/ouuan/CPTH/branch/master/graph/badge.svg)](https://codecov.io/gh/ouuan/CPTH)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/fa25dcaabe794716896f14a393b5e907)](https://app.codacy.com/manual/ouuan/CPTH)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fouuan%2FCPTH.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fouuan%2FCPTH?ref=badge_shield)
 
 What is CPTH?
 
@@ -29,3 +30,7 @@ The codes are based on C++11, there may be problems with other standards.
 ## Contributing
 
 You can read [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fouuan%2FCPTH.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fouuan%2FCPTH?ref=badge_large)
