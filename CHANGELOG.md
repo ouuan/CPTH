@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+### Added
+
+- `const std::vector<size_t> &HLD::adjacent(size_t u) const`
+
 ### Changed
 
 - `HLD::HLD(size_t size = 0)` => `explicit HLD::HLD(size_t size = 0)`

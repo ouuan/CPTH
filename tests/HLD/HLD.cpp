@@ -21,12 +21,23 @@ int main()
     }
 
     CPTH::HLD hld(n);
+    vector<vector<size_t>> g(n + 1);
 
     for (int i = 1; i < n; ++i)
     {
         int u, v;
         cin >> u >> v;
         hld.addEdge(u, v);
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+
+    for (int i = 1; i <= n; ++i)
+    {
+        sort(g[i].begin(), g[i].end());
+        auto adj = hld.adjacent(i);
+        sort(adj.begin(), adj.end());
+        assert(g[i] == adj);
     }
 
     hld.build(1);

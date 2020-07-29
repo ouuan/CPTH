@@ -38,6 +38,8 @@ class HLD
 
     size_t heavyChild(size_t u) const;
 
+    const std::vector<size_t> &adjacent(size_t u) const;
+
     std::vector<size_t> children(size_t u) const;
 
     std::pair<size_t, size_t> subtree(size_t u) const;
@@ -171,8 +173,16 @@ size_t HLD::heavyChild(size_t u) const
     return heavy[u];
 }
 
+const std::vector<size_t> &HLD::adjacent(size_t u) const
+{
+    validate(u);
+    return g[u];
+}
+
 std::vector<size_t> HLD::children(size_t u) const
 {
+    assert(built);
+    validate(u);
     auto ret = g[u];
     if (pa[u])
         ret.erase(std::find(ret.begin(), ret.end(), pa[u]));

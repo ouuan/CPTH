@@ -32,6 +32,8 @@ The nodes are numbered from `1` to `n`.
 
 `size_t heavyChild(size_t u) const`: Get the heavy child of node `u`. If `u` is a leaf, it returns `0`.
 
+`const std::vector<size_t> &adjacent(size_t u) const`: Get all adjacent nodes (the children and the parent) of node `u`.
+
 `std::vector<size_t> children(size_t u) const`: Get the children (adjacent nodes except the parent, if it's not the root) of node `u`.
 
 `std::pair<size_t, size_t> subtree(size_t u) const`: Get the interval which represents for the subtree rooted on node `u` in the DFS order. i.e. suppose the return value is `{l, r}`, then a node is in the subtree rooted on `u` if and only if it's in the interval from the `l`-th node in the DFS order to the `r`-th node in the DFS order.
