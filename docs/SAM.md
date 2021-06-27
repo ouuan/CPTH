@@ -20,7 +20,8 @@ struct SAMNode
     size_t pa, len;
     std::map<charType, size_t> ch;
     SAMNode() : pa(std::vector<SAMNode>().max_size()), len(0) {}
-    size_t &operator[](const charType &x) { return ch[x]; }
+    size_t &operator[](const charType &x);
+    size_t operator[](const charType &x) const;
 };
 ```
 
@@ -29,6 +30,8 @@ struct SAMNode
 `len`: The maximum length of the node.
 
 `ch`: The child of the node.
+
+`operator[](const charType &x)`: Get the child of the node with the character `x`.
 
 The root node is the node `0`, its parent is `std::vector<SAMNode>().max_size()`.
 

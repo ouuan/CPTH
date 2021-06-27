@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+### Added
+
+- `size_t SAMNode::operator[](const charType &x) const`
+
 ## 0.8.0
 
 ### Added

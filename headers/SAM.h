@@ -5,6 +5,7 @@
 
 #include <cassert>
 #include <map>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -23,6 +24,17 @@ class SAM
         size_t &operator[](const charType &x)
         {
             return ch[x];
+        }
+        size_t operator[](const charType &x) const
+        {
+            try
+            {
+                return ch.at(x);
+            }
+            catch (std::out_of_range const &)
+            {
+                return charType();
+            }
         }
     };
 
