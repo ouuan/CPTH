@@ -30,6 +30,7 @@ int main()
     long long ans = 0;
 
     function<void(int)> dfs = [&](int u) {
+        assert(sam[u]['.'] == 0);
         for (auto v : sam.children(u))
         {
             dfs(v);
@@ -40,6 +41,11 @@ int main()
     };
 
     dfs(0);
+
+    int u = 0;
+    for (auto x : s)
+        u = sam[u][x];
+    assert(cnt[u] == 1);
 
     cout << ans;
 
