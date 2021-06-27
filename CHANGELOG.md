@@ -1,5 +1,7 @@
 ## UNRELEASED
 
+## 0.8.0
+
 ### Added
 
 - `const std::vector<size_t> &HLD::adjacent(size_t u) const`
