@@ -20,7 +20,7 @@ struct SAMNode
     size_t pa, len;
     std::map<charType, size_t> ch;
     SAMNode() : pa(std::vector<SAMNode>().max_size()), len(0) {}
-    size_t &operator[](size_t x) { return ch[x]; }
+    size_t &operator[](const charType &x) { return ch[x]; }
 };
 ```
 

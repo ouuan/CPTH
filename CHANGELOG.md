@@ -7,6 +7,7 @@
 ### Changed
 
 - `HLD::HLD(size_t size = 0)` => `explicit HLD::HLD(size_t size = 0)`
+- `size_t &SAMNode::operator[](size_t x)` => `size_t &SAMNode::operator[](const charType &x)`
 
 ## 0.7.0
 
