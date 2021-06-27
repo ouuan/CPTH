@@ -33,7 +33,7 @@ class SAM
             }
             catch (std::out_of_range const &)
             {
-                return charType();
+                return 0;
             }
         }
     };
