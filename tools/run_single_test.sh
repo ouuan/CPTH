@@ -11,9 +11,9 @@ mkdir -p .tmp
 
 echo "Running the test $1..."
 echo "Compiling $1.cpp..."
-g++ "tests/$1/$1.cpp" -o ".tmp/$1" -Wall -Wshadow -Wextra -Werror -std=c++11 -I "headers"
+g++ "tests/$1/$1.cpp" -o ".tmp/$1" -Wall -Wshadow -Wextra -Werror -std=c++11
 echo "Compiling $1_gen.cpp..."
-g++ "tests/$1/$1_gen.cpp" -o ".tmp/$1_gen" -Wall -Wshadow -Wextra -Werror -std=c++11 -I third_party/Tree-Generator
+g++ "tests/$1/$1_gen.cpp" -o ".tmp/$1_gen" -Wall -Wshadow -Wextra -Werror -std=c++11
 echo "Compiling $1_bf.cpp..."
 g++ "tests/$1/$1_bf.cpp" -o ".tmp/$1_bf" -Wall -Wshadow -Wextra -Werror -std=c++11
 echo "Compiling $1_check.cpp..."

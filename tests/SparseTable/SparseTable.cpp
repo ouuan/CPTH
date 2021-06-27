@@ -1,4 +1,4 @@
-#include "SparseTable.h"
+#include "../../headers/SparseTable.h"
 
 #include <cstdio>
 #include <vector>

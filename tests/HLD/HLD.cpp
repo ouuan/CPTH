@@ -1,9 +1,9 @@
-#include "HLD.h"
+#include "../../headers/HLD.h"
 
 #include <cstdio>
 #include <iostream>
 
-#include "SegmentTree.h"
+#include "../../headers/SegmentTree.h"
 
 using namespace std;
 

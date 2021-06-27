@@ -1,1 +1,1 @@
-#include "checkers/ncmp.cpp"
+#include "../../third_party/testlib/checkers/ncmp.cpp"

@@ -4,6 +4,7 @@
 #define CPTH_MONOTONOUSQUEUE
 
 #include <cassert>
+#include <cstddef>
 #include <functional>
 #include <vector>
 

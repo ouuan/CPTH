@@ -4,7 +4,7 @@
 #include <iostream>
 #include <random>
 
-#include "treegenerator.h"
+#include "../../third_party/Tree-Generator/treegenerator.h"
 
 using namespace std;
 using namespace tree_generator_by_ouuan;

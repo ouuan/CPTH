@@ -1,6 +1,6 @@
 // https://ouuan.github.io/post/parallel-binary-search/#zjoi2013k%E5%A4%A7%E6%95%B0%E6%9F%A5%E8%AF%A2httpswwwluogucomcnproblemp3332
 
-#include "BIT.h"
+#include "../../headers/BIT.h"
 
 #include <algorithm>
 #include <cstdio>

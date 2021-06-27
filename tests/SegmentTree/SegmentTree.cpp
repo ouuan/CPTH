@@ -1,4 +1,4 @@
-#include "SegmentTree.h"
+#include "../../headers/SegmentTree.h"
 
 #include <iostream>
 

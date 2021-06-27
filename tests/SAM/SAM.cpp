@@ -1,4 +1,4 @@
-#include "SAM.h"
+#include "../../headers/SAM.h"
 
 #include <algorithm>
 #include <functional>

@@ -4,6 +4,10 @@
 
 - `size_t SAMNode::operator[](const charType &x) const`
 
+### Fixed
+
+- Fixed some includes.
+
 ## 0.8.0
 
 ### Added
